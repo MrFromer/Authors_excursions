@@ -1,0 +1,56 @@
+.baseForm {
+    background-color: white;
+    border-radius: 1rem;
+    padding: 1rem;
+    width: 32rem;
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+button.tinkoffButton {
+  background-color: rgb(255, 217, 0);
+}
+
+.textStyle {
+  font-size: large;
+  height: 2rem;
+  text-align: left;
+  align-self: stretch;
+}
+
+.columned {
+  gap: 0rem;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.setVisibleIcon {
+  height: 100%;
+  width: 100%;
+}
+
+.setVisibleButton {
+  height: 2.4rem;
+  align-self: baseline;
+}
+
+.rowed {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.horizontalStretch {
+  width: 100%;
+}
+
+.submitButtonStyle {
+  align-self: center;
+}
+
+label.error {
+  color: red;
+  text-align: left;
+}
