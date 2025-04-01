@@ -6,11 +6,12 @@ import { emailResult, passwordResult, checkEmail, checkPassword } from './utilit
 
 
 
-function EmailPasswordBlock(submit: (email: string, password: string) => void) {
+function EmailPasswordBlock(changeEmail: React.Dispatch<React.SetStateAction<string>>, changePassword: React.Dispatch<React.SetStateAction<string>>) {
 
     function emailChanged(event: React.ChangeEvent<HTMLInputElement>) {
         const newEmail = event.target.value
         setEmail(newEmail)
+        changeEmail(newEmail)
         const res = checkEmail(newEmail)
         if (res === emailResult.FormatError) {
             setEmailError(true)
@@ -23,6 +24,7 @@ function EmailPasswordBlock(submit: (email: string, password: string) => void) {
     function passwordChanged(event: React.ChangeEvent<HTMLInputElement>) {
         const newPassword = event.target.value
         setPassword(newPassword)
+        changePassword(newPassword)
         const res = checkPassword(newPassword) 
         switch (res) {
             case passwordResult.Ok: {
@@ -55,30 +57,29 @@ function EmailPasswordBlock(submit: (email: string, password: string) => void) {
     const [isVisible, setVisible] = useState(false)
     return (
         <>
-            <form onSubmit={() => submit(email, password)} className='baseForm'>
-                <div className='columned'>
-                    <label className='textStyle'>
+            <div className='columned'>
+                <label className='textStyle'>
                     Email
-                    </label>
-                    <input className='textStyle' placeholder='example@mail.com' value={email} onChange={emailChanged}/>
-                    {emailError? <label className='error'>Введите корректный email</label>: <></>}
-                </div>
-                <div className='columned'>
-                    <label className='textStyle'>
+                </label>
+                <input className='textStyle' placeholder='example@mail.com' value={email} onChange={emailChanged}/>
+                <label className='error'>
+                    {emailError? "Введите корректный email": "\u00A0"}
+                </label>
+            </div>
+            <div className='columned'>
+                <label className='textStyle'>
                     Пароль
-                    </label>
-                    <div className='rowed'>
-                        <input className='textStyle horizontalStretch' type={isVisible? 'text': 'password'} placeholder='Введите пароль' value={password} onChange={passwordChanged}/>
-                        <button type='button' className='setVisibleButton' onClick={() => setVisible(!isVisible)}>
-                            {isVisible? <FaEye className='icon setVisibleIcon'/>: <FaEyeSlash className='icon setVisibleIcon'/>}
-                        </button>
-                    </div>
-                    {passwordError? <label className='error'>{passwordErrorText}</label>: <></>}
+                </label>
+                <div className='rowed'>
+                    <input className='textStyle horizontalStretch' type={isVisible? 'text': 'password'} placeholder='Введите пароль' value={password} onChange={passwordChanged}/>
+                    <button type='button' className='setVisibleButton' onClick={() => setVisible(!isVisible)}>
+                        {isVisible? <FaEye className='icon setVisibleIcon'/>: <FaEyeSlash className='icon setVisibleIcon'/>}
+                    </button>
                 </div>
-                <button type='submit' className='tinkoffButton'>
-                    Войти
-                </button>
-            </form>
+                <label className='error'>
+                    {passwordError? passwordErrorText: "\u00A0"}
+                </label>
+            </div>
         </>
     )
 }

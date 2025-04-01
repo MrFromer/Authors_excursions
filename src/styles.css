@@ -54,3 +54,7 @@ label.error {
   color: red;
   text-align: left;
 }
+
+.refStyle {
+  font-size: smaller;
+}
