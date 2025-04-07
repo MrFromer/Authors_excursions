@@ -1,6 +1,7 @@
 
 import { useState } from 'react'
 import EmailPasswordBlock from './EmailPasswordBlock'
+import { isMobile } from 'react-device-detect'
 
 
 
@@ -15,7 +16,7 @@ function LogIn() {
 
   return (
     <>
-      <form className='baseForm'>
+      <form className={isMobile? 'mobileBaseForm': 'baseForm'}>
         {EmailPasswordBlock(setReturnEmail, setReturnPassword)}
         <button type='button' className='tinkoffButton' onClick={() => submit()}>
           Войти

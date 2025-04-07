@@ -8,6 +8,16 @@
     flex-direction: column;
 }
 
+.mobileBaseForm {
+  background-color: white;
+  border-radius: 1rem;
+  padding: 1rem;
+  width: 90vw;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
 button.tinkoffButton {
   background-color: rgb(255, 217, 0);
 }
@@ -17,6 +27,11 @@ button.tinkoffButton {
   height: 2rem;
   text-align: left;
   align-self: stretch;
+  color: black;
+}
+
+button.whiteButton {
+  background-color: white;
 }
 
 .columned {

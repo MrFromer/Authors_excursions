@@ -72,7 +72,7 @@ function EmailPasswordBlock(changeEmail: React.Dispatch<React.SetStateAction<str
                 </label>
                 <div className='rowed'>
                     <input className='textStyle horizontalStretch' type={isVisible? 'text': 'password'} placeholder='Введите пароль' value={password} onChange={passwordChanged}/>
-                    <button type='button' className='setVisibleButton' onClick={() => setVisible(!isVisible)}>
+                    <button type='button' className='setVisibleButton whiteButton' onClick={() => setVisible(!isVisible)}>
                         {isVisible? <FaEye className='icon setVisibleIcon'/>: <FaEyeSlash className='icon setVisibleIcon'/>}
                     </button>
                 </div>
