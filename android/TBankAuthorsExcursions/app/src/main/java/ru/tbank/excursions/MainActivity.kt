@@ -1,65 +1,45 @@
 package ru.tbank.excursions
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import android.widget.EditText
+import android.widget.Button
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.fragment_login)
+        setContentView(R.layout.activity_main)
 
-        val emailInputLayout = findViewById<com.google.android.material.textfield.TextInputLayout>(R.id.emailInputLayout)
-        val emailEditText = findViewById<EditText>(R.id.emailEditText)
-        val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]{2,}".toRegex()
+        val authButton = findViewById<Button>(R.id.mainAuthButton)
+        val regButton = findViewById<Button>(R.id.mainRegButton)
 
-        emailEditText.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable) {
-
-                if (s.toString().trim().matches(emailPattern) && s.isNotEmpty()) {
-                    /*emailInputLayout.isErrorEnabled = false
-                    emailInputLayout.error = null*/
-                    emailInputLayout.helperText = ""
-                } else {
-                    emailInputLayout.helperText = resources.getString(R.string.email_error)
-                }
+        val startAuthForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult())
+        { result: ActivityResult ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                val intent = result.data
             }
+        }
 
-            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+        val startRegForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult())
+        { result: ActivityResult ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                val intents = result.data
             }
+        }
 
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-            }
-        })
+        authButton.setOnClickListener {
+            val intent = Intent(this, AuthActivity::class.java)
+            startAuthForResult.launch(intent)
+        }
 
-        val passwordInputLayout = findViewById<com.google.android.material.textfield.TextInputLayout>(R.id.passwordInputLayout)
-        val passwordEditText =  findViewById<EditText>(R.id.passwordEditText)
-        val passwordPattern = "^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[!#\$%&*]).{8,}$".toRegex()
-
-        passwordEditText.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable) {
-                if (s.length<8 && s.isNotEmpty())
-                {
-                    passwordInputLayout.helperText = resources.getString(R.string.password_minimum_length_error)
-                }
-                else if (!s.toString().trim().matches(passwordPattern) && s.isNotEmpty()) {
-                    passwordInputLayout.helperText = resources.getString(R.string.password_symbols_error)
-                } else {
-                    /*passwordInputLayout.isErrorEnabled = false
-                    passwordInputLayout.error = null*/
-                    passwordInputLayout.helperText = ""
-                }
-            }
-
-            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
-            }
-
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-            }
-        })
+        regButton.setOnClickListener {
+            val intent = Intent(this, RegActivity::class.java)
+            startRegForResult.launch(intent)
+        }
     }
 }

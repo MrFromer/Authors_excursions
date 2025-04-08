@@ -3,9 +3,14 @@
     <string name="auth_email_label">Email</string>
     <string name="email_error">Введите корректный email</string>
     <string name="password_label">Пароль</string>
-    <string name="password_symbols_error">Пароль должен содержать буквы, цифры и символы “!#$%&amp;*”</string>
+    <string name="password_characters_error">Пароль должен содержать буквы, цифры и символы “!#$%&amp;*”</string>
     <string name="password_minimum_length_error">Пароль должен содержать не менее 8 символов</string>
     <string name="email_example_hint">example@mail.com</string>
     <string name="enter_password_hint">Введите пароль</string>
     <string name="login_button">Войти</string>
+    <string name="register_button">Зарегистрироваться</string>
+    <string name="have_an_account">Есть аккаунт? Войти</string>
+    <string name="forgot_password">Забыли пароль?</string>
+    <string name="reg_thanks">Спасибо за регистрацию</string>
+    <string name="reg_continue">Продолжить</string>
 </resources>

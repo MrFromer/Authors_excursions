@@ -6,16 +6,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/back2"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/white_tr"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="16dp"
+        android:padding="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/emailInputLayout"
@@ -28,13 +33,13 @@
             app:placeholderText="@string/email_example_hint"
             app:expandedHintEnabled="false"
 
+            android:textColorHint="@color/black"
+            app:placeholderTextColor="@color/gray"
             app:boxStrokeColor="@color/black"
             app:endIconTint="@color/black"
             app:helperTextTextColor="@color/error_red"
             app:hintTextColor="@color/black"
             app:startIconTint="@color/black">
-
-
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/emailEditText"
@@ -42,7 +47,8 @@
                 android:layout_height="wrap_content"
                 android:imeOptions="actionDone"
                 android:inputType="textEmailAddress"
-                android:maxLines="1" />
+                android:maxLines="1"
+                android:textColor="@color/black"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -54,16 +60,18 @@
             android:layout_height="@dimen/edit_text_height"
 
             android:hint="@string/password_label"
+            app:placeholderText="@string/enter_password_hint"
+
             app:boxStrokeColor="@color/black"
-
-            app:endIconMode="password_toggle"
+            android:textColorHint="@color/black"
+            app:placeholderTextColor="@color/gray"
             app:endIconTint="@color/black"
-            app:expandedHintEnabled="false"
-
             app:helperTextTextColor="@color/error_red"
             app:hintTextColor="@color/black"
-            app:placeholderText="@string/enter_password_hint"
-            app:startIconTint="@color/black">
+            app:startIconTint="@color/black"
+
+            app:endIconMode="password_toggle"
+            app:expandedHintEnabled="false">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/passwordEditText"
@@ -71,7 +79,8 @@
                 android:layout_height="wrap_content"
                 android:imeOptions="actionDone"
                 android:inputType="textPassword"
-                android:maxLines="1" />
+                android:maxLines="1"
+                android:textColor="@color/black"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -87,6 +96,14 @@
             android:textAllCaps="false"
 
             android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin"
+            android:text="@string/forgot_password"
+            android:textColor="@color/black"
+            />
 
     </LinearLayout>
 
