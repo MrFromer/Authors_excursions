@@ -1,3 +1,5 @@
+import { CODE_LENGTH } from "./globals"
+
 export enum emailResult {
   Ok,
   Empty,
@@ -12,6 +14,14 @@ export enum passwordResult {
 }
 
 
+export enum codeResult {
+  Ok,
+  Empty,
+  LenError,
+  NotOnlyDigitsError
+}
+
+
 export function checkEmail(email: string): emailResult {
   if (email.trim().length === 0) {
     return emailResult.Empty
@@ -21,6 +31,19 @@ export function checkEmail(email: string): emailResult {
   }
   return emailResult.FormatError
 }
+
+export function checkCode(code: string): codeResult {
+  if (code.trim().length === 0) {
+    return codeResult.Empty
+  }
+  if (!/^\d+$/.test(code.trim())) {
+    return codeResult.NotOnlyDigitsError
+  } 
+  if (!(code.trim().length === CODE_LENGTH)) {
+    return codeResult.LenError
+  }
+  return codeResult.Ok
+} 
 
 
 export function checkPassword(password: string): passwordResult {
