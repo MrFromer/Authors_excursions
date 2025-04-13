@@ -21,6 +21,7 @@ async def get_products(
     response_model=Product,
     status_code=status.HTTP_201_CREATED,
 )
+
 async def create_product(
     product_in: ProductCreate,
     session: AsyncSession = Depends(db_helper.scoped_session_dependency),
