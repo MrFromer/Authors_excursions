@@ -13,4 +13,7 @@
     <string name="forgot_password">Забыли пароль?</string>
     <string name="reg_thanks">Спасибо за регистрацию</string>
     <string name="reg_continue">Продолжить</string>
+    <string name="confirm_button">Подтвердить</string>
+    <string name="code_hint">Код</string>
+    <string name="type_code_helper">Введите код отправленный вам на почту</string>
 </resources>
