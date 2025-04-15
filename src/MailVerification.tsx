@@ -23,12 +23,23 @@ function MailVerification() {
             <label className='textStyle'>
                 Введите код отправленный вам на почту
             </label>
-            <div className="rowed" style={{gap: "10px"}}>
-                <input className='textStyle horizontalStretch customBorder' type='text' value={code} onChange={codeChanged} style={{height: '2.2rem', paddingLeft: "7px", display: "inline-flex", alignItems: "center"}}/>
-                <button type='button' className='tinkoffButton' onClick={() => submit()} style={{height: '2.5rem', display: "inline-flex", alignItems: "center"}}>
-                    Подтвердить
-                </button>
-            </div>
+            {!isMobile? 
+                <div className="rowed" style={{gap: "10px", display: "inline-flex", alignItems: "center"}}>
+                    <input className='textStyle horizontalStretch customBorder' type='text' value={code} 
+                    onChange={codeChanged} style={{height: '2.2rem', paddingLeft: "7px", display: "inline-flex", alignItems: "center"}}/>
+                    <button type='button' className='tinkoffButton' onClick={() => submit()} style={{height: '2.5rem', display: "inline-flex", alignItems: "center"}}>
+                        Подтвердить
+                    </button>
+                </div>
+                :
+                <>
+                    <input className='textStyle customBorder' type='text' value={code} 
+                    onChange={codeChanged} style={{height: '2.2rem', paddingLeft: "7px", display: "inline-flex", alignItems: "center"}}/>
+                    <button type='button' className='tinkoffButton' onClick={() => submit()} style={{height: '2.5rem', display: "inline-flex", alignItems: "center"}}>
+                        Подтвердить
+                    </button>
+                </>
+            }
             <label className='error'>
                 {codeError? codeErrorText: "\u00A0"}
             </label>
