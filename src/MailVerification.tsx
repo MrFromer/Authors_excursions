@@ -1,9 +1,5 @@
 import { useState } from "react"
 import { isMobile } from 'react-device-detect'
-import { codeResult, checkCode } from "./utilities";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { CODE_LENGTH } from "./globals";
-
 function MailVerification() {
     const [code, setCode] = useState("");
     const [codeError, setCodeError] = useState(false)
