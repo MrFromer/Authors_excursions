@@ -6,6 +6,8 @@
     gap: 1rem;
     display: flex;
     flex-direction: column;
+    cursor: default;
+    caret-color: transparent;
 }
 
 .mobileBaseForm {
@@ -16,6 +18,8 @@
   gap: 1rem;
   display: flex;
   flex-direction: column;
+  cursor: default;
+  caret-color: transparent;
 }
 
 button.tinkoffButton {
@@ -110,6 +114,8 @@ label.error {
   gap: 0.5rem;
   display: flex;
   flex-direction: column;
+  cursor: default;
+  caret-color: transparent;
 }
 
 .mobileVerificationForm {
@@ -120,4 +126,6 @@ label.error {
   gap: 0.5rem;
   display: flex;
   flex-direction: column;
+  cursor: default;
+  caret-color: transparent;
 }

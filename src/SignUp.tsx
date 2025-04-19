@@ -10,13 +10,27 @@ function SignUp() {
   
   const [returnEmail, setReturnEmail] = useState("")
   const [returnPassword, setReturnPassword] = useState("")
+  const [username, setUsername] = useState("")
 
   function submit() {
     console.log(`Email: ${returnEmail}, Password: ${returnPassword}`)
   }
+
+  function usernameChanged(event: React.ChangeEvent<HTMLInputElement>) {
+    const newUsername = event.target.value
+    setUsername(newUsername)
+  }
+
   return (
     <>
       <form className={isMobile? 'mobileBaseForm': 'baseForm'}>
+        <div className='columned' >
+          <label className='textStyle' >
+            Имя пользователя
+          </label>
+          <input className='textStyle customBorder' placeholder='Иван Говнов' value={username} onChange={usernameChanged}/>
+          <label className='error' style={{visibility: "hidden"}}> "" </label>
+        </div>
         {EmailPasswordBlock(setReturnEmail, setReturnPassword)}
         <button type='button' className='tinkoffButton' onClick={() => submit()}>
           Зарегистрироваться

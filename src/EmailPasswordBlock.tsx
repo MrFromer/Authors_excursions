@@ -62,7 +62,7 @@ function EmailPasswordBlock(changeEmail: React.Dispatch<React.SetStateAction<str
                     Email
                 </label>
                 <input className='textStyle customBorder' placeholder='example@mail.com' value={email} onChange={emailChanged}/>
-                <label className='error'>
+                <label className='error' style={emailError? {visibility: "visible"}: {visibility: "hidden"}}>
                     {emailError? "Введите корректный email": "\u00A0"}
                 </label>
             </div>
@@ -76,7 +76,7 @@ function EmailPasswordBlock(changeEmail: React.Dispatch<React.SetStateAction<str
                         {isVisible? <FaEye className='icon setVisibleIcon'/>: <FaEyeSlash className='icon setVisibleIcon'/>}
                     </button>
                 </div>
-                <label className='error'>
+                <label className='error' style={emailError? {visibility: "visible"}: {visibility: "hidden"}}>
                     {passwordError? passwordErrorText: "\u00A0"}
                 </label>
             </div>
