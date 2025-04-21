@@ -5,14 +5,12 @@ import android.widget.EditText
 import androidx.activity.addCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
-class AuthActivity : AppCompatActivity() {
+class ActivitySignIn : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_auth)
+        setContentView(R.layout.activity_signin)
 
         val emailInputLayout = findViewById<com.google.android.material.textfield.TextInputLayout>(R.id.emailInputLayout)
         val emailEditText = findViewById<EditText>(R.id.emailEditText)

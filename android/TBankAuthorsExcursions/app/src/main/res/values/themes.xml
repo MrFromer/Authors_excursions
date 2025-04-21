@@ -2,6 +2,7 @@
 
     <style name="Base.Theme.TBankAuthorsExcursions" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="materialButtonStyle">@style/Widget.App.Button</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
     <style name="Theme.TBankAuthorsExcursions" parent="Base.Theme.TBankAuthorsExcursions" />

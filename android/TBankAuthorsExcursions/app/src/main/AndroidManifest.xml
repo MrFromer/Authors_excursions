@@ -13,18 +13,21 @@
         android:theme="@style/Theme.TBankAuthorsExcursions"
         tools:targetApi="31">
         <activity
-            android:name=".RegActivity"
-            android:exported="false"
-            android:configChanges="orientation|screenSize|screenLayout"/>
+            android:name=".ActivityFilter"
+            android:exported="false" />
         <activity
-            android:name=".AuthActivity"
-            android:exported="false"
-            android:configChanges="orientation|screenSize|screenLayout"/>
+            android:name=".ActivitySignUp"
+            android:configChanges="orientation|screenSize|screenLayout"
+            android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ActivitySignIn"
+            android:configChanges="orientation|screenSize|screenLayout"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityMain"
+            android:configChanges="orientation|screenSize|screenLayout"
             android:exported="true"
-            android:windowSoftInputMode="stateAlwaysVisible"
-            android:configChanges="orientation|screenSize|screenLayout">
+            android:windowSoftInputMode="stateAlwaysVisible">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

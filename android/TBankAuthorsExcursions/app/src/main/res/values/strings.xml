@@ -16,4 +16,14 @@
     <string name="confirm_button">Подтвердить</string>
     <string name="code_hint">Код</string>
     <string name="type_code_helper">Введите код отправленный вам на почту</string>
+    <string name="main_page">Главная</string>
+    <string name="settings">Настройки</string>
+    <string name="profile_text">Профиль</string>
+    <string name="filters_text">Фильтры</string>
+    <string name="cities_text">Города</string>
+    <string name="date_text">Дата</string>
+    <string name="choose_date_text">Выбрать период</string>
+    <string name="members_text">Участники</string>
+    <string name="having_kids_text">Есть дети? (0-14)</string>
+    <string name="apply_text">Применить фильтры</string>
 </resources>

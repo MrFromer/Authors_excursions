@@ -6,11 +6,11 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.activity.addCallback
 
-class RegActivity : AppCompatActivity() {
+class ActivitySignUp : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_registration)
+        setContentView(R.layout.activity_signup)
 
         val emailInputLayout = findViewById<com.google.android.material.textfield.TextInputLayout>(R.id.emailInputLayout)
         val emailEditText = findViewById<EditText>(R.id.emailEditText)
