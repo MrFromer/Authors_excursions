@@ -6,7 +6,6 @@ from .mixins import UserRelations
 
 if TYPE_CHECKING:
     from .post import Post_Excurtion
-    from .user import User
 
 class User_Guide(Base, UserRelations):
     __table_args__ = {'extend_existing': True}  # Позволяет переопределить столбец id
@@ -20,7 +19,12 @@ class User_Guide(Base, UserRelations):
     
     first_name: Mapped[str] = mapped_column(String(32), unique=False)
     last_name: Mapped[str] = mapped_column(String(32), unique=False)
-    
+    avatar: Mapped[str | None] = mapped_column(
+        String(255),
+        nullable=True,  # Поле необязательное
+        photo_path="Путь к файлу фотографии",
+    )
+
     post_excutions: Mapped[list["Post_Excurtion"]] = relationship(back_populates="user_guide")
     
     # Настройки миксина

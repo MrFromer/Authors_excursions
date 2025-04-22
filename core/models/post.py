@@ -1,9 +1,10 @@
-from sqlalchemy.orm import Mapped, mapped_column, validates
+from sqlalchemy.orm import Mapped, mapped_column, validates, relationship
 from sqlalchemy import Boolean, Integer, String, Text, DateTime, CheckConstraint
 from datetime import datetime, timezone
 
 from .base import Base
 from .mixins import UserGuideRelations
+#from .excursion_photo import ExcursionPhoto
 
 
 class Post_Excurtion(UserGuideRelations, Base):
@@ -25,6 +26,12 @@ class Post_Excurtion(UserGuideRelations, Base):
     status: Mapped[str] = mapped_column(
         String(20), nullable=False, default="change", server_default="change"
     )
+
+    # Связь с фотографиями
+    # photos: Mapped[list["ExcursionPhoto"]] = relationship(
+    #     back_populates="post",
+    #     cascade="all, delete-orphan"
+    # )
 
     __table_args__ = (
         CheckConstraint(# Для SQLite проверки на дату из прошлого
