@@ -2,9 +2,9 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy import String, Text
 
 from .base import Base
-from .mixins import UserGuideRelations, UserRelations
+from .mixins import UserGuideRelations
 
-class Post_Excurtion(UserRelations, UserGuideRelations,Base):
+class Post_Excurtion(UserGuideRelations,Base):
     _user_guide_back_populates = "posts"
     _user_back_populates = "posts"
 
