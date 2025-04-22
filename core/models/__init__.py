@@ -6,6 +6,7 @@ __all__ = (
     "User",
     "User_Guide",
     "Post_Excurtion",
+    "Profile_Guide",
 )
 
 from .base import Base
@@ -14,3 +15,4 @@ from .product import Product
 from .user import User
 from .user_guide import User_Guide
 from .post import Post_Excurtion
+from .profile_guide import Profile_Guide
