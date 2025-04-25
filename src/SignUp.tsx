@@ -1,5 +1,5 @@
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import EmailPasswordBlock from './EmailPasswordBlock'
 import { isMobile } from 'react-device-detect'
 
@@ -21,14 +21,15 @@ function SignUp() {
     setUsername(newUsername)
   }
 
+
   return (
     <>
       <form className={isMobile? 'mobileBaseForm': 'baseForm'}>
         <div className='columned' >
-          <label className='textStyle' >
+          <label className='textStyle selectable-text' >
             Имя пользователя
           </label>
-          <input className='textStyle customBorder' placeholder='Иван Говнов' value={username} onChange={usernameChanged}/>
+          <input className='textStyle customBorder input_style' placeholder='Иван Иванович' value={username} onChange={usernameChanged}/>
           <label className='error' style={{visibility: "hidden"}}> "" </label>
         </div>
         {EmailPasswordBlock(setReturnEmail, setReturnPassword)}

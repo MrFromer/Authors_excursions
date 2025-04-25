@@ -1,21 +1,24 @@
 import SignUp from './SignUp';
 import LogIn from './LogIn';
-import DefaultPage from './DefaultPage';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import RestorePassword from './RestorePassword';
 import MailVerification from './MailVerification';
-
+import MainPage from './MainPage';
+import { useEffect } from 'react';
 
 
 function App() {
+  useEffect(()=> {
+    document.title = "Авторские экскурсии"
+  })
   return (
     <Router>
       <Routes>
-        <Route path='/restore-password/' element={RestorePassword()} />
-        <Route path='/' element={DefaultPage()} />
-        <Route path='/login/' element={LogIn()} />
-        <Route path='/signup/' element={SignUp()} />
-        <Route path='/confirm-email/' element={MailVerification()} />
+        <Route path="/restore-password" element={<RestorePassword />} />
+        <Route path="/" element={<MainPage />} />
+        <Route path="/login" element={<LogIn />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/confirm-email" element={<MailVerification />} />
       </Routes>
     </Router>
   )

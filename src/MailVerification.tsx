@@ -16,12 +16,12 @@ function MailVerification() {
     return (
     <>
         <form className={isMobile? 'mobileVerificationForm': 'verificationForm'}>
-            <label className='textStyle'>
+            <label className='textStyle selectable-text'>
                 Введите код отправленный вам на почту
             </label>
             {!isMobile? 
                 <div className="rowed" style={{gap: "10px", display: "inline-flex", alignItems: "center"}}>
-                    <input className='textStyle horizontalStretch customBorder' type='text' value={code} 
+                    <input className='textStyle horizontalStretch customBorder input_style' type='text' value={code} 
                     onChange={codeChanged} style={{height: '2.2rem', paddingLeft: "7px", display: "inline-flex", alignItems: "center"}}/>
                     <button type='button' className='tinkoffButton' onClick={() => submit()} style={{height: '2.5rem', display: "inline-flex", alignItems: "center"}}>
                         Подтвердить
@@ -29,14 +29,14 @@ function MailVerification() {
                 </div>
                 :
                 <>
-                    <input className='textStyle customBorder' type='text' value={code} 
+                    <input className='textStyle customBorder input_style' type='text' value={code} 
                     onChange={codeChanged} style={{height: '2.2rem', paddingLeft: "7px", display: "inline-flex", alignItems: "center"}}/>
                     <button type='button' className='tinkoffButton' onClick={() => submit()} style={{height: '2.5rem', display: "inline-flex", alignItems: "center"}}>
                         Подтвердить
                     </button>
                 </>
             }
-            <label className='error'>
+            <label className='error selectable-text'>
                 {codeError? codeErrorText: "\u00A0"}
             </label>
         </form>

@@ -58,25 +58,25 @@ function EmailPasswordBlock(changeEmail: React.Dispatch<React.SetStateAction<str
     return (
         <>
             <div className='columned'>
-                <label className='textStyle'>
+                <label className='textStyle selectable-text'>
                     Email
                 </label>
-                <input className='textStyle customBorder' placeholder='example@mail.com' value={email} onChange={emailChanged}/>
+                <input className='textStyle customBorder input_style' placeholder='example@mail.com' value={email} onChange={emailChanged}/>
                 <label className='error' style={emailError? {visibility: "visible"}: {visibility: "hidden"}}>
                     {emailError? "Введите корректный email": "\u00A0"}
                 </label>
             </div>
             <div className='columned'>
-                <label className='textStyle'>
+                <label className='textStyle selectable-text'>
                     Пароль
                 </label>
                 <div className='rowed' style={{display: "inline-flex", alignItems: "center"}}>
-                    <input className='textStyle horizontalStretch customBorder' type={isVisible? 'text': 'password'} placeholder='Введите пароль' value={password} onChange={passwordChanged}/>
-                    <button type='button' className='setVisibleButton whiteButton' onClick={() => setVisible(!isVisible)}>
+                    <input className='textStyle horizontalStretch customBorder input_style' type={isVisible? 'text': 'password'} placeholder='Введите пароль' value={password} onChange={passwordChanged}/>
+                    <button type='button' className='setVisibleButton whiteButton' onClick={() => setVisible(!isVisible)} style={{height: "2.5rem"}}>
                         {isVisible? <FaEye className='icon setVisibleIcon'/>: <FaEyeSlash className='icon setVisibleIcon'/>}
                     </button>
                 </div>
-                <label className='error' style={emailError? {visibility: "visible"}: {visibility: "hidden"}}>
+                <label className='error selectable-text' style={emailError? {visibility: "visible"}: {visibility: "hidden"}}>
                     {passwordError? passwordErrorText: "\u00A0"}
                 </label>
             </div>

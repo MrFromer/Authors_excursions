@@ -62,8 +62,9 @@ button.whiteButton {
 
 .columned {
   gap: 0rem;
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
+  align-items: center;
 }
 
 
@@ -102,6 +103,15 @@ label.error {
   text-align: left;
 }
 
+.selectable-text {
+  user-select: text;
+  cursor: default; 
+}
+
+.selectable-text:hover {
+  cursor: text; 
+}
+
 .refStyle {
   font-size: smaller;
 }
@@ -118,6 +128,11 @@ label.error {
   caret-color: transparent;
 }
 
+.noCursor {
+  cursor: default;
+  caret-color: transparent;
+}
+
 .mobileVerificationForm {
   background-color: #F3F3F5;
   border-radius: 1rem;
@@ -128,4 +143,24 @@ label.error {
   flex-direction: column;
   cursor: default;
   caret-color: transparent;
+}
+
+div.top-block {
+  position: fixed; /* или 'absolute', если родительский контейнер позиционирован */
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #F3F3F5;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* Чтобы блок был поверх других элементов */
+}
+
+input.input_style {
+  height: 2.2rem;
+  padding-left: 7px;
+  display: inline-flex;
+  align-items: center;
+  cursor: auto;
+  caret-color: auto;
 }
