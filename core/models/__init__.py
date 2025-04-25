@@ -6,6 +6,8 @@ __all__ = (
     "User",
     "User_Guide",
     "Post_Excurtion",
+    "Excursion_Photo",
+    "Book",
     
 )
 
@@ -15,3 +17,5 @@ from .product import Product
 from .user import User
 from .user_guide import User_Guide
 from .post import Post_Excurtion
+from .excursion_photo import Excursion_Photo
+from .booking import Book

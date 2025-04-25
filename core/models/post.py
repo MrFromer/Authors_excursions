@@ -4,7 +4,10 @@ from datetime import datetime, timezone
 
 from .base import Base
 from .mixins import UserGuideRelations
-#from .excursion_photo import ExcursionPhoto
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from .excursion_photo import Excursion_Photo
 
 
 class Post_Excurtion(UserGuideRelations, Base):
@@ -28,10 +31,10 @@ class Post_Excurtion(UserGuideRelations, Base):
     )
 
     # Связь с фотографиями
-    # photos: Mapped[list["ExcursionPhoto"]] = relationship(
-    #     back_populates="post",
-    #     cascade="all, delete-orphan"
-    # )
+    photos: Mapped[list["Excursion_Photo"]] = relationship(
+        back_populates="post",
+        cascade="all, delete-orphan"
+    )
 
     __table_args__ = (
         CheckConstraint(# Для SQLite проверки на дату из прошлого

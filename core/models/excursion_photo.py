@@ -1,16 +1,19 @@
-# from datetime import datetime
-# from sqlalchemy import ForeignKey, String
-# from sqlalchemy.orm import Mapped, mapped_column, relationship
-# from .base import Base 
-# from .post import Post_Excurtion
+from datetime import datetime
+from sqlalchemy import ForeignKey, Integer, String
+from sqlalchemy.orm import Mapped, mapped_column, relationship
+from .base import Base 
+from typing import TYPE_CHECKING
 
-# class ExcursionPhoto(Base):
-#     __tablename__ = "excursion_photos"
+if TYPE_CHECKING:
+    from .post import Post_Excurtion
+
+class Excursion_Photo(Base):
+
+    file_path: Mapped[str] = mapped_column(String(255))  # Путь к файлу
+    photo_number: Mapped[int] = mapped_column(
+        Integer, nullable=False
+    )
     
-#     id: Mapped[int] = mapped_column(primary_key=True)
-#     file_path: Mapped[str] = mapped_column(String(255))  # Путь к файлу
-#     is_main: Mapped[bool] = mapped_column(default=False)  # Главное фото
-    
-#     # Связь с экскурсией
-#     excursion_id: Mapped[int] = mapped_column(ForeignKey("post.id"))
-#     excursion: Mapped["Post_Excurtion"] = relationship(back_populates="excursion_photo")
+    # Связь с экскурсией
+    excursion_id: Mapped[int] = mapped_column(ForeignKey("post_excurtions.id"))
+    excursion: Mapped["Post_Excurtion"] = relationship(back_populates="excursion_photo")
