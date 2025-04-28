@@ -1,8 +1,8 @@
-"""Remake data base and make one to one connect btw user and user_guide (id_user=id_guide) 4.0 version DB
+"""update post_excurtion table, remake DB 5.0 try 2
 
-Revision ID: 53e6266feb83
-Revises:
-Create Date: 2025-04-28 15:28:23.526372
+Revision ID: 962ddd42f20f
+Revises: 8c76f65c1466
+Create Date: 2025-04-28 21:35:12.579295
 
 """
 
@@ -13,8 +13,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = "53e6266feb83"
-down_revision: Union[str, None] = None
+revision: str = "962ddd42f20f"
+down_revision: Union[str, None] = "8c76f65c1466"
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 
@@ -55,7 +55,7 @@ def upgrade() -> None:
         sa.Column("city", sa.String(length=30), nullable=False),
         sa.Column("title", sa.String(length=100), nullable=False),
         sa.Column("description", sa.Text(), server_default="", nullable=False),
-        sa.Column("has_childen", sa.Boolean(), server_default="false", nullable=False),
+        sa.Column("has_children", sa.Boolean(), server_default="false", nullable=False),
         sa.Column("persons_count", sa.Integer(), server_default="1", nullable=False),
         sa.Column("date", sa.DateTime(), nullable=False),
         sa.Column(
@@ -63,7 +63,6 @@ def upgrade() -> None:
         ),
         sa.Column("user_guide_id", sa.Integer(), nullable=False),
         sa.Column("id", sa.Integer(), nullable=False),
-        sa.CheckConstraint("date >= datetime('now')", name="date_not_in_past"),
         sa.CheckConstraint(
             "status IN ('approved', 'disapproved', 'change')", name="check_status_values"
         ),

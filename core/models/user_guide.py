@@ -13,7 +13,7 @@ class User_Guide(Base):
     
     # Переопределяем id, делая его FK на User.id
     id: Mapped[int] = mapped_column(
-        ForeignKey("users.id", ondelete="CASCADE"), 
+        ForeignKey("users.id"), 
         primary_key=True,
         autoincrement=False  # Отключаем автоинкремент, так как ID берется из User
     )

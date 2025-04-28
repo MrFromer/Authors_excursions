@@ -17,7 +17,7 @@ class Post_Excurtion(UserGuideRelations, Base):
     city: Mapped[str] = mapped_column(String(30))
     title: Mapped[str] = mapped_column(String(100))
     description: Mapped[str] = mapped_column(Text, default="", server_default="")
-    has_childen: Mapped[bool] = mapped_column(
+    has_children: Mapped[bool] = mapped_column(
         Boolean, default=False, server_default="false"
     )
     persons_count: Mapped[int] = mapped_column(
@@ -39,9 +39,9 @@ class Post_Excurtion(UserGuideRelations, Base):
     booking: Mapped["Book"] = relationship(back_populates="excursion")
 
     __table_args__ = (
-        CheckConstraint(# Для SQLite проверки на дату из прошлого
-            "date >= datetime('now')", name="date_not_in_past"
-        ),  
+        # CheckConstraint(# Для SQLite проверки на дату из прошлого
+        #     "date >= datetime('now')", name="date_not_in_past"
+        # ),  
         CheckConstraint(  # проверка, что статус экскурсии один из этих 3-х
             "status IN ('approved', 'disapproved', 'change')",
             name="check_status_values",
@@ -49,7 +49,13 @@ class Post_Excurtion(UserGuideRelations, Base):
     )
 
     @validates("date")  # python проверка на дату из прошлого
-    def validate_date(self, value):
+    def validate_date(self, key, value):
         if value < datetime.now(timezone.utc).replace(tzinfo=None):
             raise ValueError("Дата экскурсии должна быть в будущем")
         return value
+    
+    def __str__(self):
+        return f"{self.__class__.__name__}(id={self.id}, username={self.title!r})"
+    
+    def __repr__(self):
+        return str(self)
