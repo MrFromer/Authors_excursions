@@ -1,5 +1,5 @@
 .baseForm {
-    background-color: #F3F3F5;
+    background-color: white;
     border-radius: 1rem;
     padding: 1rem;
     width: 32rem;
@@ -11,7 +11,7 @@
 }
 
 .mobileBaseForm {
-  background-color: #F3F3F5;
+  background-color: white;
   border-radius: 1rem;
   padding: 1rem;
   width: 90vw;
@@ -40,7 +40,7 @@ button.tinkoffButton:focus {
   height: 2rem;
   text-align: left;
   align-self: stretch;
-  background-color: #F3F3F5;
+  background-color: white;
   color: #333333;
 }
 
@@ -57,12 +57,12 @@ input.customLeftBorder {
 }
 
 button.whiteButton {
-  background-color: #F3F3F5;
+  background-color: white;
 }
 
 .columned {
   gap: 0rem;
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
 }
@@ -76,17 +76,11 @@ button.whiteButton {
 
 .setVisibleButton {
   height: 2.4rem;
-  align-self: baseline;
   outline: none;
 }
-
-.setVisibleButton:focus {
-  outline: none;
-}
-
 .rowed {
-  display: flex;
-  flex-direction: row;
+  width: 100%;
+  display: inline-flex;
   align-items: center;
 }
 
@@ -117,7 +111,7 @@ label.error {
 }
 
 .verificationForm {
-  background-color: #F3F3F5;
+  background-color: white;
   border-radius: 1rem;
   padding: 1rem;
   width: 25rem;
@@ -134,7 +128,7 @@ label.error {
 }
 
 .mobileVerificationForm {
-  background-color: #F3F3F5;
+  background-color: white;
   border-radius: 1rem;
   padding: 1rem;
   width: 90vw;
@@ -150,10 +144,9 @@ div.top-block {
   top: 0;
   left: 0;
   width: 100%;
-  background: #F3F3F5;
+  background: white;
   padding: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  z-index: 1000; /* Чтобы блок был поверх других элементов */
 }
 
 input.input_style {
@@ -163,4 +156,28 @@ input.input_style {
   align-items: center;
   cursor: auto;
   caret-color: auto;
+}
+
+div.mainPageExternal {
+  align-items: center;
+  justify-content: flex-start;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+div.mainPageInternal {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+div.search {
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
 }
