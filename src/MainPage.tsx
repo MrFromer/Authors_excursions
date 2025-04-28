@@ -7,11 +7,27 @@ import { TextField, Box } from "@mui/material";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { ru } from "date-fns/locale";
+import React from "react";
 
 type DateRange = {
     startDate: Date | null;
     endDate: Date | null;
   };
+  
+
+const CustomInput = React.forwardRef<HTMLInputElement, any>(({ value, onClick, label }, ref) => (
+<TextField
+    label={label}
+    value={value}
+    fullWidth
+    onClick={onClick}
+    inputRef={ref}
+    sx={{ width: '100%' }}
+    slotProps={{
+    inputLabel: { shrink: true },
+    }}
+/>
+));
 
 function MainPage() {
     const [city, setCity] = useState<string | undefined>(undefined)
@@ -60,13 +76,14 @@ function MainPage() {
                     Личный кабинет
                 </button>
             </div>
-            <div className="mainPageInternal">
+            <div className="mainPageInternal noCursor">
                 <div className="search">
                     <div style={{width: "100%"}}>
                         <Select
                             options={cities}
                             placeholder="Выберите город"
                             noOptionsMessage={() => "Город не найден"}
+                            menuPortalTarget={document.body}
                             styles={{
                                 singleValue: (provided) => ({
                                 ...provided,
@@ -93,16 +110,19 @@ function MainPage() {
                                     textAlign: 'left',
                                     marginLeft: 0
                                 }),
+                                menuPortal: (base) => ({ ...base, zIndex: 9999 }),
                             }}
                             onChange={(newValue: SingleValue<CityOption>, actionMeta: ActionMeta<CityOption>) => {
                                 console.log(newValue)
                                 setCity(newValue?.label)
                             }}/>
-                        </div>
-                        <div>
-                            <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={ru}>
-                                <Box sx={{ display: "flex", gap: 2, marginTop: 2 }}>
+                    </div>
+                    <div style={{width: "100%"}}>
+                        <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={ru}>
+                            <Box sx={{ display: "flex", gap: 2, marginTop: 2, width: "100%"}}>
+                                <Box sx={{flex: 1}}>
                                     <DatePicker 
+                                        wrapperClassName="datepicker"
                                         locale={ru}
                                         selected={dates.startDate}
                                         onChange={handleStartDateChange}
@@ -116,13 +136,22 @@ function MainPage() {
                                             label="Дата от"
                                             variant="outlined"
                                             fullWidth
-                                            InputLabelProps={{
-                                                shrink: true,
+                                            sx={{width: "100%"}}
+                                            slotProps={{ 
+                                                inputLabel: {
+                                                    shrink: true,
+                                                },
+                                                input: {
+                                                  style: { width: '100%', backgroundColor: "white"}
+                                                }
                                             }}
                                             />
                                         }
                                         />
+                                </Box>
+                                <Box sx={{flex: 1}}>
                                     <DatePicker
+                                        wrapperClassName="datepicker"
                                         locale={ru}
                                         selected={dates.endDate}
                                         onChange={handleEndDateChange}
@@ -137,15 +166,24 @@ function MainPage() {
                                             label="Дата до"
                                             variant="outlined"
                                             fullWidth
-                                            InputLabelProps={{
-                                                shrink: true,
+                                            slotProps={{
+                                                inputLabel: {
+                                                    shrink: true,
+                                                },
+                                                input: {
+                                                  style: { width: '100%', backgroundColor: "white" }
+                                                }
                                             }}
                                             />
                                         }
-                                        />
-                                    </Box>
-                                </LocalizationProvider>
+                                    />
+                                </Box>
+                            </Box>
+                        </LocalizationProvider>
                     </div>
+                    <button className="tinkoffButton" style={{marginTop: "20px"}}>
+                        Найти экскурсии
+                    </button>
                 </div>
             </div>
         </div>

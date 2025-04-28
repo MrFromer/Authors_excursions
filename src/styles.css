@@ -177,7 +177,12 @@ div.mainPageInternal {
 }
 
 div.search {
+  width: 60%;
   display: flex;
   flex-direction: column;
   padding-top: 20px;
+}
+
+.datepicker {
+  width: 100%;
 }
