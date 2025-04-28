@@ -35,8 +35,13 @@ android {
     }
 }
 
-dependencies {
 
+
+dependencies {
+    implementation(libs.androidx.datastore)
+    implementation(libs.androidx.security)
+    implementation(libs.retrofit.converter.gson)
+    implementation(libs.retrofit)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

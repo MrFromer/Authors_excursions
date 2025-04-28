@@ -1,11 +1,15 @@
 <resources>
+    <string name="empty"></string>
     <string name="app_name">TBank Author\'s Excursions</string>
     <string name="auth_email_label">Email</string>
+    <string name="enter_email_error">Не введен email</string>
     <string name="email_error">Введите корректный email</string>
+    <string name="login_error">Ошибка входа</string>
     <string name="password_label">Пароль</string>
     <string name="password_characters_error">Пароль должен содержать буквы, цифры и символы “!#$%&amp;*”</string>
     <string name="password_minimum_length_error">Пароль должен содержать не менее 8 символов</string>
     <string name="email_example_hint">example@mail.com</string>
+    <string name="enter_password_error">Не введен пароль</string>
     <string name="enter_password_hint">Введите пароль</string>
     <string name="login_button">Войти</string>
     <string name="register_button">Зарегистрироваться</string>
@@ -26,4 +30,5 @@
     <string name="members_text">Участники</string>
     <string name="having_kids_text">Есть дети? (0-14)</string>
     <string name="apply_text">Применить фильтры</string>
+    <string name="invalid_email_or_password_text">Неправильный email или пароль</string>
 </resources>

@@ -14,9 +14,15 @@ object InputValidation {
         val textWatcher = object : TextWatcher {
             override fun afterTextChanged(s: Editable) {
                 if (s.toString().trim().matches(EMAIL_PATTERN) && s.isNotEmpty()) {
-                    inputLayout.helperText = ""
+                    inputLayout.isErrorEnabled = false
+                    inputLayout.error = null
+
+                    //inputLayout.helperText = ""
                 } else {
-                    inputLayout.helperText = errorMessage
+                    inputLayout.isErrorEnabled = true
+                    inputLayout.error = errorMessage
+
+                    //inputLayout.helperText = errorMessage
                 }
             }
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
@@ -31,14 +37,21 @@ object InputValidation {
             override fun afterTextChanged(s: Editable) {
                 if (s.length<8 && s.isNotEmpty())
                 {
-                    inputLayout.helperText = lengthError
+                    inputLayout.isErrorEnabled = true
+                    inputLayout.error = lengthError
+
+                    //inputLayout.helperText = lengthError
                 }
                 else if (!s.toString().trim().matches(PASSWORD_PATTERN) && s.isNotEmpty()) {
-                    inputLayout.helperText = charactersError
+                    inputLayout.isErrorEnabled = true
+                    inputLayout.error = charactersError
+
+                    //inputLayout.helperText = charactersError
                 } else {
-                    /*passwordInputLayout.isErrorEnabled = false
-                    passwordInputLayout.error = null*/
-                    inputLayout.helperText = ""
+                    inputLayout.isErrorEnabled = false
+                    inputLayout.error = null
+
+                    //inputLayout.helperText = ""
                 }
             }
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}

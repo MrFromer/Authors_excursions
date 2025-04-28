@@ -1,7 +1,7 @@
 [versions]
-agp = "8.6.0"
+agp = "8.6.1"
 kotlin = "1.9.0"
-coreKtx = "1.15.0"
+coreKtx = "1.16.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
@@ -9,11 +9,18 @@ appcompat = "1.7.0"
 material = "1.12.0"
 activity = "1.10.1"
 constraintlayout = "2.2.1"
-foundationAndroid = "1.7.8"
+foundationAndroid = "1.8.0"
 material3Android = "1.3.2"
-uiToolingPreviewAndroid = "1.7.8"
+uiToolingPreviewAndroid = "1.8.0"
+retrofit = "2.11.0"
+converter-gson = "2.11.0"
+androidx-datastore = "1.1.5"
+security-crypto-ktx = "1.0.0"
+
 
 [libraries]
+retrofit = { group = "com.squareup.retrofit2", name="retrofit", version.ref = "retrofit" }
+retrofit-converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "converter-gson"}
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
@@ -25,6 +32,8 @@ androidx-constraintlayout = { group = "androidx.constraintlayout", name = "const
 androidx-foundation-android = { group = "androidx.compose.foundation", name = "foundation-android", version.ref = "foundationAndroid" }
 androidx-material3-android = { group = "androidx.compose.material3", name = "material3-android", version.ref = "material3Android" }
 androidx-ui-tooling-preview-android = { group = "androidx.compose.ui", name = "ui-tooling-preview-android", version.ref = "uiToolingPreviewAndroid" }
+androidx-datastore = {group="androidx.datastore", name = "datastore", version.ref = "androidx-datastore"}
+androidx-security = {group = "androidx.security", name = "security-crypto-ktx", version.ref = "security-crypto-ktx"}
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
