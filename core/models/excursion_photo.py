@@ -16,4 +16,4 @@ class Excursion_Photo(Base):
     
     # Связь с экскурсией
     excursion_id: Mapped[int] = mapped_column(ForeignKey("post_excurtions.id"))
-    excursion: Mapped["Post_Excurtion"] = relationship(back_populates="excursion_photo")
+    excursion: Mapped["Post_Excurtion"] = relationship(back_populates="photos")

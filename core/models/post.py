@@ -30,11 +30,13 @@ class Post_Excurtion(UserGuideRelations, Base):
         String(20), nullable=False, default="change", server_default="change"
     )
 
-    # Связь с фотографиями
+    # Связь с фотографиями (исправленный back_populates)
     photos: Mapped[list["Excursion_Photo"]] = relationship(
-        back_populates="post",
+        back_populates="excursion",  # Теперь совпадает с Excursion_Photo
         cascade="all, delete-orphan"
     )
+
+    booking: Mapped["Book"] = relationship(back_populates="excursion")
 
     __table_args__ = (
         CheckConstraint(# Для SQLite проверки на дату из прошлого
@@ -47,7 +49,7 @@ class Post_Excurtion(UserGuideRelations, Base):
     )
 
     @validates("date")  # python проверка на дату из прошлого
-    def validate_date(self, key, value):
+    def validate_date(self, value):
         if value < datetime.now(timezone.utc).replace(tzinfo=None):
             raise ValueError("Дата экскурсии должна быть в будущем")
         return value
