@@ -8,6 +8,7 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from .excursion_photo import Excursion_Photo
+    from .booking import Book
 
 
 class Post_Excurtion(UserGuideRelations, Base):

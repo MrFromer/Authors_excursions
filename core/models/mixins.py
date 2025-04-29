@@ -5,6 +5,7 @@ from sqlalchemy.orm import declared_attr, Mapped, mapped_column, relationship
 
 if TYPE_CHECKING:
     from .user_guide import User_Guide
+    from .user import User
 
 class UserGuideRelations:
     _user_guide_id_nullable: bool = False

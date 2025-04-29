@@ -91,7 +91,7 @@ async def get_guides_with_excurtions(
     guides = await session.scalars(stmt)
 
     # for user in users.unique():  # type: User
-    for guide in guides:  # type: User
+    for guide in guides:  
         print("**" * 10)
         print(guide)
         for excurtion in guide.posts:
@@ -101,7 +101,7 @@ async def get_excurtions_with_guides(session: AsyncSession):
     stmt = select(Post_Excurtion).options(joinedload(Post_Excurtion.user_guide)).order_by(Post_Excurtion.id)
     posts = await session.scalars(stmt)
 
-    for post in posts:  # type: Post
+    for post in posts:  
         print("post:", post)
         print("author:", post.user_guide)
 
