@@ -49,11 +49,15 @@ class Post_Excurtion(UserGuideRelations, Base):
         ),
     )
 
-    @validates("date")  # python проверка на дату из прошлого
+    @validates("date")
     def validate_date(self, key, value):
-        if value < datetime.now(timezone.utc).replace(tzinfo=None):
+        if value.tzinfo is not None:
+            value = value.replace(tzinfo=None)
+        
+        if value < datetime.now():
             raise ValueError("Дата экскурсии должна быть в будущем")
         return value
+    
     
     def __str__(self):
         return f"{self.__class__.__name__}(id={self.id}, username={self.title!r}, user_guide_id={self.user_guide_id})"

@@ -1,6 +1,6 @@
 from datetime import datetime, timezone
 from sqlalchemy.orm import Mapped, mapped_column, relationship, validates
-from sqlalchemy import CheckConstraint, DateTime, String, ForeignKey
+from sqlalchemy import CheckConstraint, DateTime, String, ForeignKey, func
 from typing import TYPE_CHECKING
 from .base import Base
 from .mixins import UserRelations
@@ -11,7 +11,10 @@ if TYPE_CHECKING:
 class Book(Base, UserRelations):
 
     date_book: Mapped[datetime] = mapped_column( # время храниться в UTC
-        DateTime, nullable=False
+        DateTime, 
+        nullable=False,
+        server_default=func.now(), #не внеслась в миграцию!!!!!!!!!!
+        default=datetime.now,
     )  
 
     #связь с экскурсией

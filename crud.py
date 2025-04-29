@@ -106,6 +106,10 @@ async def get_excurtions_with_guides(session: AsyncSession):
         print("author:", post.user_guide)
 
 
+#нужно будет сделать функцию для создания брони при нажатии кнопки забронировать, пользователем (сделать по аналогии, как с созданием экскурсии, пользователя, гида)
+
+#нужно сделать ещё одну функцию для вывода пользователя и всех его броней, т.е это связь один ко многим (по аналогии с get_guides_with_excurtions) И потом уже через бронь можно будет провалиться в экскурсию
+
 async def main():
     async with db_helper.session_factory() as session:
         #await create_user(session=session, username="nelson", role="guide")
