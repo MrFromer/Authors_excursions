@@ -36,4 +36,9 @@ class User_Guide(Base):
 
     # Настройки миксина
     # _user_id_unique = True
-    # _user_back_populates = "user_guide"
+    
+    def __str__(self):
+        return f"User_Guide(id={self.id}, name={self.first_name} {self.last_name})"
+
+    def __repr__(self):
+        return str(self)

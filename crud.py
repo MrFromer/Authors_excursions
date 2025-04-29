@@ -78,6 +78,33 @@ async def create_posts_excurtion(
     print(post)
     return post
 
+async def get_guides_with_excurtions(
+    session: AsyncSession,
+):
+    stmt = (
+        select(User_Guide)
+        .options(
+            selectinload(User_Guide.posts),
+        )
+        .order_by(User_Guide.id)
+    )
+    guides = await session.scalars(stmt)
+
+    # for user in users.unique():  # type: User
+    for guide in guides:  # type: User
+        print("**" * 10)
+        print(guide)
+        for excurtion in guide.posts:
+            print("-", excurtion)
+
+async def get_excurtions_with_guides(session: AsyncSession):
+    stmt = select(Post_Excurtion).options(joinedload(Post_Excurtion.user_guide)).order_by(Post_Excurtion.id)
+    posts = await session.scalars(stmt)
+
+    for post in posts:  # type: Post
+        print("post:", post)
+        print("author:", post.user_guide)
+
 
 async def main():
     async with db_helper.session_factory() as session:
@@ -88,24 +115,24 @@ async def main():
         user_nelson = await get_user_by_username(session=session,username="nelson")
         #await create_user_guide(session=session, id = user_nelson.id, first_name='nelson', last_name='Oden')
         #await show_users_with_guide_info(session=session)
-        await create_posts_excurtion(
-            session=session,
-            user_guide_id=user_bob.id,  # ID гида
-            title="Экскурсия по Москве",
-            city="Москва",
-            description="Интересная экскурсия по центру города",
-            date=datetime(2025, 5, 15, 10, 0)  # Явное указание даты
-        )
+        # await create_posts_excurtion(
+        #     session=session,
+        #     user_guide_id=user_bob.id,  # ID гида
+        #     title="Экскурсия по Москве",
+        #     city="Москва",
+        #     description="Интересная экскурсия по центру города",
+        #     date=datetime(2025, 5, 15, 10, 0)  # Явное указание даты
+        # )
 
-        await create_posts_excurtion(
-            session=session,
-            user_guide_id=user_mike.id,  # ID гида
-            title="Экскурсия по Москве",
-            city="Москва",
-            description="Интересная экскурсия по центру города",
-            date=datetime(2025, 5, 15, 10, 0)  # Явное указание даты
-        )
-        
+        # await create_posts_excurtion(
+        #     session=session,
+        #     user_guide_id=user_mike.id,  # ID гида
+        #     title="Экскурсия по Москве",
+        #     city="Москва",
+        #     description="Интересная экскурсия по центру города",
+        #     date=datetime(2025, 5, 15, 10, 0)  # Явное указание даты
+        # )
+        await get_excurtions_with_guides(session=session)
 
 if __name__ == "__main__":
     asyncio.run(main())

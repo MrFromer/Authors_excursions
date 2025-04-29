@@ -55,7 +55,7 @@ class Post_Excurtion(UserGuideRelations, Base):
         return value
     
     def __str__(self):
-        return f"{self.__class__.__name__}(id={self.id}, username={self.title!r})"
+        return f"{self.__class__.__name__}(id={self.id}, username={self.title!r}, user_guide_id={self.user_guide_id})"
     
     def __repr__(self):
         return str(self)
