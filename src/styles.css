@@ -1,3 +1,5 @@
+
+
 .baseForm {
     background-color: white;
     border-radius: 1rem;
@@ -42,6 +44,13 @@ button.tinkoffButton:focus {
   align-self: stretch;
   background-color: white;
   color: #333333;
+}
+
+.bigText {
+  font-size: 1.6rem;
+  align-self: stretch;
+  font-weight: bold;
+  color: black;
 }
 
 input.customBorder {
@@ -171,18 +180,57 @@ div.mainPageInternal {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  width: 80%;
+  width: 65%;
   justify-content: flex-start;
   align-items: center;
 }
 
 div.search {
-  width: 60%;
+  padding: 20px;
+  width: 80%;
   display: flex;
   flex-direction: column;
-  padding-top: 20px;
+}
+
+div.roundedBlock {
+  margin: 20px;
+  background-color: white;
+  border-radius: 1rem;
+  padding: 1rem;
+  gap: 0.5rem;
 }
 
 .datepicker {
   width: 100%;
+}
+
+div.chosenExcursions {
+  margin-top: 1rem;
+  gap: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-items: start;
+  align-items: center;
+}
+
+
+.excursionBlockExternal {
+  width: 80%;
+  padding: 10px;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+div.excursionBlockInternal {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
 }

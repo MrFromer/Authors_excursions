@@ -1,4 +1,4 @@
-interface CityOption {
+export interface CityOption {
     value: string;
     label: string;
     population?: number;

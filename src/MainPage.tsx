@@ -8,6 +8,7 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { ru } from "date-fns/locale";
 import React from "react";
+import ExcurtionBlock from "./ExcursionBlock";
 
 type DateRange = {
     startDate: Date | null;
@@ -30,6 +31,7 @@ const CustomInput = React.forwardRef<HTMLInputElement, any>(({ value, onClick, l
 ));
 
 function MainPage() {
+    const today = new Date()
     const [city, setCity] = useState<string | undefined>(undefined)
     const [dates, setDates] = useState<DateRange>({
       startDate: null,
@@ -62,7 +64,7 @@ function MainPage() {
             <div className="noCursor" style={{
                 backgroundColor: "white",
                 display: 'grid',
-                gridTemplateColumns: '1fr 1fr', // Колонки равной ширины по бокам
+                gridTemplateColumns: '1fr 1fr', 
                 alignItems: 'center',
                 width: '100%',
                 padding: '0.5rem 1rem',
@@ -77,7 +79,7 @@ function MainPage() {
                 </button>
             </div>
             <div className="mainPageInternal noCursor">
-                <div className="search">
+                <div className="roundedBlock search">
                     <div style={{width: "100%"}}>
                         <Select
                             options={cities}
@@ -129,6 +131,7 @@ function MainPage() {
                                         selectsStart
                                         startDate={dates.startDate}
                                         endDate={dates.endDate}
+                                        minDate={today}
                                         placeholderText="Дата от"
                                         dateFormat="dd.MM.yyyy"
                                         customInput={
@@ -184,6 +187,12 @@ function MainPage() {
                     <button className="tinkoffButton" style={{marginTop: "20px"}}>
                         Найти экскурсии
                     </button>
+                </div>
+                <div className="chosenExcursions">
+                    <label className="bigText">
+                        Избранные экскурсии вашего города
+                    </label>
+                    { ExcurtionBlock("Москва", "20 Мая 2025", "Экскурсия по красной площади и прилегающим территориям akrglkagaglagaganskgfas f vlsajdngjasdnkfnadslfkasjvd ksajdng") }
                 </div>
             </div>
         </div>
