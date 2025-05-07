@@ -159,7 +159,7 @@ function CreateExcursion() {
       <textarea className='textStyle customBorder input_style' style={{padding: "6px", resize: "none", height: "7rem"}}/>
       
       <label className='textStyle2 selectable-text'>
-        Выберите изображение для экскурсии размером 9:13
+        Выберите изображение для экскурсии размером 9 на 13
       </label>
       <div {...getRootProps()} style={{
         border: '2px dashed #ccc',
