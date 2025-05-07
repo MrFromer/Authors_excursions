@@ -234,3 +234,24 @@ div.excursionBlockInternal {
   justify-content: flex-start;
   align-items: flex-start;
 }
+
+div.createExcursionExternal {
+  margin-top: 30px;
+  width: 60vw;
+  height: 100vh;
+  padding: 10px;
+  gap: 10px;
+  display: flex;
+  flex-direction:  column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.textStyle2 {
+  font-size: large;
+  height: 2rem;
+  text-align: left;
+  align-self: stretch;
+  background-color: #F3F3F5;
+  color: #333333;
+}
