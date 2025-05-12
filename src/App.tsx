@@ -6,6 +6,7 @@ import MailVerification from './MailVerification';
 import CreateExcursion from './CreateExcursion';
 import MainPage from './MainPage';
 import { useEffect } from 'react';
+import AccountPage from './AccountPage';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path="/login" element={<LogIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/confirm-email" element={<MailVerification />} />
+        <Route path='/account' element={ <AccountPage /> } />
       </Routes>
     </Router>
   )

@@ -24,6 +24,21 @@
   caret-color: transparent;
 }
 
+a.tinkoffButton {
+  background-color: #FFDD2D;
+  color: #333333;
+  border-radius: 7px;
+  padding: 10px;
+}
+
+a.roundedRight {
+  border-radius: 0 7px 7px 0;
+}
+
+a.tinkoffButton:focus {
+  outline: none;
+}
+
 button.tinkoffButton {
   background-color: #FFDD2D;
   color: #333333;
@@ -174,15 +189,19 @@ div.mainPageExternal {
   height: 100vh;
   display: flex;
   flex-direction: column;
+  padding-bottom: 10px;
 }
 
 div.mainPageInternal {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  width: 65%;
+  width: 100%;
   justify-content: flex-start;
   align-items: center;
+  padding-bottom: 10px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 div.search {
@@ -207,7 +226,7 @@ div.roundedBlock {
 div.chosenExcursions {
   margin-top: 1rem;
   gap: 1rem;
-  width: 100%;
+  width: 80%;
   display: flex;
   flex-direction: column;
   justify-items: start;
@@ -236,9 +255,17 @@ div.excursionBlockInternal {
 }
 
 div.createExcursionExternal {
-  margin-top: 30px;
-  width: 60vw;
+  width: 100vw;
   height: 100vh;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+div.createExcursionInternal {
+  margin-top: 30px;
+  width: 80%;
   padding: 10px;
   gap: 10px;
   display: flex;
