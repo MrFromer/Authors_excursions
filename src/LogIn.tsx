@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react'
 import EmailPasswordBlock from './EmailPasswordBlock'
 import { isMobile } from 'react-device-detect'
+import { Link } from 'react-router-dom'
 
 
 
@@ -21,9 +22,9 @@ function LogIn() {
         <button type='button' className='tinkoffButton' onClick={() => submit()}>
           Войти
         </button>
-        <a href='/restore-password/' className='refStyle'>
+        <Link to='/restore-password/' className='refStyle'>
           Забыли пароль?
-        </a>
+        </Link>
       </form>
     </>
   )

@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react'
 import EmailPasswordBlock from './EmailPasswordBlock'
 import { isMobile } from 'react-device-detect'
+import { Link } from 'react-router-dom'
 
 
 
@@ -36,9 +37,9 @@ function SignUp() {
         <button type='button' className='tinkoffButton' onClick={() => submit()}>
           Зарегистрироваться
         </button>
-        <a href='/login/' className='refStyle'>
+        <Link to='/login/' className='refStyle'>
           Есть аккаунт? Войти
-        </a>
+        </Link>
       </form>
     </>
   )

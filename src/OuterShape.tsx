@@ -1,5 +1,5 @@
 import { JSX, } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function OuterShape(innerShape: JSX.Element) {
     const navigate = useNavigate()
@@ -15,9 +15,9 @@ function OuterShape(innerShape: JSX.Element) {
                 boxSizing: 'border-box'
             }}
             >
-                <a href="/" style={{ display: "inline-flex", justifySelf: 'start', height: "auto", alignItems: "center"}}>
+                <Link to="/" style={{ display: "inline-flex", justifySelf: 'start', height: "auto", alignItems: "center"}}>
                     <img src="https://cdn.tbank.ru/static/pfa-multimedia/images/ae288629-59d7-4eb6-b074-8bb0549a43b6.svg" style={{height: "35px"}}/>
-                </a>
+                </Link>
                 <button className="tinkoffButton" style={{ justifySelf: 'end', display: "inline-flex", alignItems: "center", height: "35px" }} onClick={() => navigate("/account")}>
                     Личный кабинет
                 </button>

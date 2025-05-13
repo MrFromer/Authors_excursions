@@ -103,6 +103,13 @@ function CreateExcursion() {
     let new_val = Number.parseInt(event.target.value)
     setMaxPeople(new_val)
   }
+
+  function submitExcursion() {
+    console.log("Excurison submitted")
+    // TODO: Сделать отправку экскурсии
+  }
+
+
   const [minPeople, setMinPeople] = useState<number>(1)
   const [maxPeople, setMaxPeople] = useState<number>(1)
 
@@ -242,7 +249,7 @@ function CreateExcursion() {
           Допускаются ли дети {"\t \t "}
           <input type='checkbox' checked={checkChildren} onChange={changeChildren} />
         </label>
-        <button className='tinkoffButton' type='button' style={{alignSelf: "center", width: "40%"}}>
+        <button className='tinkoffButton' type='button' onClick={submitExcursion} style={{alignSelf: "center", width: "40%"}}>
           Опубликовать экскурсию
         </button>
       </div>
