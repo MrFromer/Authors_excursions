@@ -31,4 +31,14 @@
     <string name="having_kids_text">Есть дети? (0-14)</string>
     <string name="apply_text">Применить фильтры</string>
     <string name="invalid_email_or_password_text">Неправильный email или пароль</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="lk_text">Личный кабинет</string>
+    <string name="booked_excursions">Забронированные экскурсии</string>
+    <string name="book_history">История бронирований</string>
+    <string name="profile_settings">Настройки профиля</string>
+    <string name="logout_text">Выйти из аккаунта</string>
+    <string name="create_excursion">Создать экскурсию</string>
+    <string name="book_calendar">Календарь бронирований</string>
+    <string name="my_excursions">Опубликованные экскурсии</string>
 </resources>

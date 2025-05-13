@@ -26,6 +26,7 @@ class FragmentHome : Fragment() {
 
         val recyclerView: RecyclerView = view.findViewById(R.id.recycler_view)
         val filterButton = view.findViewById<ImageButton>(R.id.button_filter)
+        val profileButton = view.findViewById<ImageButton>(R.id.button_pa)
 
         recyclerView.layoutManager = LinearLayoutManager(activity)
         recyclerView.adapter = customAdapter
@@ -41,6 +42,11 @@ class FragmentHome : Fragment() {
         filterButton.setOnClickListener {
             val intent = Intent(activity, ActivityFilter::class.java)
             startFilterForResult.launch(intent)
+        }
+
+        profileButton.setOnClickListener {
+            val intent = Intent(activity, ActivityProfile::class.java)
+            startActivity(intent)
         }
 
         return view

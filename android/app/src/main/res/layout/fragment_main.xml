@@ -8,67 +8,62 @@
 
     android:id="@+id/activity_main"
 
-    android:background="@color/white"
-
-    android:fitsSystemWindows="true">
+    android:background="@color/white">
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="48dp"
         android:layout_marginHorizontal="@dimen/margin"
-
+        android:orientation="horizontal"
+        android:weightSum="1.0"
         app:layout_constraintHeight_percent="0.07"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-
-
-        <FrameLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="8dp"
-
-            android:background="@drawable/style_background_outline"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/button_filter"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <androidx.appcompat.widget.SearchView
-                android:id="@+id/searchView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-
-                style="@style/SearchViewStyle"
-                app:theme="@style/SearchViewStyle"
-                app:iconifiedByDefault="false" />
-        </FrameLayout>
-
         <ImageButton
             android:id="@+id/button_filter"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-
-
+            android:layout_height="match_parent"
+            android:layout_weight="0.12"
             android:background="@color/transparent"
             android:paddingVertical="3dp"
-
             android:scaleType="fitCenter"
             android:src="@drawable/icon_filter"
+            app:tint="@color/icons_black" />
 
-            app:tint="@color/icons_black"
+        <FrameLayout
+            android:id="@+id/searchFrame"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_weight="0.76" android:background="@drawable/style_background_outline">
 
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintWidth_percent="0.12"
-            />
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/searchView"
+                style="@style/SearchViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:iconifiedByDefault="false"
+                app:theme="@style/SearchViewStyle" />
+        </FrameLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageButton
+            android:id="@+id/button_pa"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_weight="0.12"
+            android:background="@color/transparent"
+            android:paddingVertical="3dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/icon_profile"
+            app:tint="@color/icons_black" />
+
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
@@ -81,44 +76,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
     </androidx.recyclerview.widget.RecyclerView>
 
-  <!-- <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        android:background="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-
-        app:tabIndicatorColor="@color/black"
-        app:tabRippleColor="@color/transparent"
-        app:tabSelectedTextColor="@color/black"
-        app:tabTextColor="@color/black"
-        app:tabIconTint="@color/black">
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/home_icon"
-            android:text="@string/main_page" />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/settings_icon"
-            android:text="@string/settings" />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/baseline_man_24"
-            android:text="Войти" />
-
-    </com.google.android.material.tabs.TabLayout> -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

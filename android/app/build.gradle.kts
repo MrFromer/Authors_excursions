@@ -33,13 +33,15 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 
 
 dependencies {
     implementation(libs.androidx.datastore)
-    implementation(libs.androidx.security)
     implementation(libs.retrofit.converter.gson)
     implementation(libs.retrofit)
     implementation(libs.androidx.core.ktx)
@@ -50,6 +52,8 @@ dependencies {
     implementation(libs.androidx.foundation.android)
     implementation(libs.androidx.material3.android)
     implementation(libs.androidx.ui.tooling.preview.android)
+    implementation(libs.androidx.legacy.support.v4)
+    implementation(libs.androidx.recyclerview)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

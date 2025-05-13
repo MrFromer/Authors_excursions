@@ -13,7 +13,6 @@ class FragmentAdapter(activity: FragmentActivity, private val tabCount: Int) : F
         {
             0 -> FragmentHome()
             1 -> FragmentSettings()
-            2-> FragmentProfile()
             else -> FragmentHome()
         }
     }

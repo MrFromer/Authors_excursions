@@ -13,9 +13,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TBankAuthorsExcursions"
-
-
         tools:targetApi="31">
+        <activity
+            android:name=".ActivityBookingHistory"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityProfileSettings"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityBookedExcursions"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityProfile"
+            android:exported="false" />
         <activity
             android:name=".ActivityFilter"
             android:exported="false" />

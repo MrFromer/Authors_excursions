@@ -8,6 +8,7 @@
     <color name="icons_black">#04192d</color>
     <color name="background_gray">#f6f7fb</color>
     <color name="error_red">#f52222</color>
+    <color name="esc_red">#eb4d55</color>
     <color name="tbank_yellow">#fce56d</color>
 
     <color name="l_gray">#FFE0E1E3</color>
