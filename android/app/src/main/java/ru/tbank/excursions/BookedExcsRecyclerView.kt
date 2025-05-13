@@ -5,8 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class CardAdapter(private val dataSet: Array<String>) :
-    RecyclerView.Adapter<CardAdapter.ViewHolder>() {
+class BookedExcsAdapter(private val dataSet: Array<String>) :
+    RecyclerView.Adapter<BookedExcsAdapter.ViewHolder>() {
 
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {

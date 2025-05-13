@@ -3,23 +3,22 @@ package ru.tbank.excursions
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 
-class FragmentProfile : Fragment() {
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_profile, container, false)
+class ActivityAccount : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContentView(R.layout.activity_account)
 
-        val authButton = view.findViewById<Button>(R.id.mainAuthButton)
-        val regButton = view.findViewById<Button>(R.id.mainRegButton)
+        val authButton = findViewById<Button>(R.id.mainAuthButton)
+        val regButton = findViewById<Button>(R.id.mainRegButton)
 
         val startSignInForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult())
         { result: ActivityResult ->
@@ -36,15 +35,13 @@ class FragmentProfile : Fragment() {
         }
 
         authButton.setOnClickListener {
-            val intent = Intent(activity, ActivitySignIn::class.java)
+            val intent = Intent(this, ActivitySignIn::class.java)
             startSignInForResult.launch(intent)
         }
 
         regButton.setOnClickListener {
-            val intent = Intent(activity, ActivitySignUp::class.java)
+            val intent = Intent(this, ActivitySignUp::class.java)
             startSignUpForResult.launch(intent)
         }
-
-        return view
     }
 }

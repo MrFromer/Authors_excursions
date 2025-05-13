@@ -1,5 +1,6 @@
 package ru.tbank.excursions
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -38,6 +39,14 @@ class ActivitySignIn : AppCompatActivity() {
         val buttonSignIn = findViewById<Button>(R.id.buttonSignIn)
 
         buttonSignIn.setOnClickListener{
+
+            //Времено так, потом надо убрать
+            if (!Temporary.loggedIn)
+            {
+                Temporary.loggedIn = true
+                intent = Intent(this,ActivityProfile::class.java)
+                startActivity(intent)
+            }
 
             Hashing.getHash("Hello".toByteArray(),"SHA-256")
 
@@ -88,8 +97,6 @@ class ActivitySignIn : AppCompatActivity() {
 //                                val token2 = runBlocking { tokenManager.getToken() }
 
                                 Log.d("LOGIN", "Login successful. Token: $token")
-
-                                finish()
                             }
 
                             400 -> {

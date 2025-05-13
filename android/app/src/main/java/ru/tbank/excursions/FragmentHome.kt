@@ -22,7 +22,7 @@ class FragmentHome : Fragment() {
         val view = inflater.inflate(R.layout.fragment_main, container, false)
 
         val dataset = arrayOf("Dagestan")
-        val customAdapter = CustomAdapter(dataset)
+        val customAdapter = CardAdapter(dataset)
 
         val recyclerView: RecyclerView = view.findViewById(R.id.recycler_view)
         val filterButton = view.findViewById<ImageButton>(R.id.button_filter)
@@ -45,8 +45,17 @@ class FragmentHome : Fragment() {
         }
 
         profileButton.setOnClickListener {
-            val intent = Intent(activity, ActivityProfile::class.java)
-            startActivity(intent)
+
+            if (Temporary.loggedIn)
+            {
+                val intent = Intent(activity, ActivityProfile::class.java)
+                startActivity(intent)
+            }
+            else
+            {
+                val intent = Intent(activity, ActivityAccount::class.java)
+                startActivity(intent)
+            }
         }
 
         return view
