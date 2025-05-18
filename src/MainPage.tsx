@@ -175,7 +175,7 @@ function MainPage() {
                 <label className="bigText">
                     Избранные экскурсии вашего города
                 </label>
-                { ExcurtionBlock("Москва", "20 Мая 2025", "40 февраля 1488", "Экскурсия по красной площади и прилегающим территориям akrglkagaglagaganskgfas f vlsajdngjasdnkfnadslfkasjvd ksajdng", true, 1, 4) }
+                { ExcurtionBlock(2, "Москва", "20 Мая 2025", "40 февраля 1488", "Экскурсия по красной площади и прилегающим территориям akrglkagaglagaganskgfas f vlsajdngjasdnkfnadslfkasjvd ksajdng", true, 1, 4) }
                 { ExcurtionBlock() }
                 { ExcurtionBlock() }
             </div>

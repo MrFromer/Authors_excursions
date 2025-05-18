@@ -14,8 +14,6 @@ type DateRange = {
 
 function CreateExcursion() {
   const today = new Date()
-  let minUndef = false
-  let maxUndef = false
 
   const [checkChildren, setCheckChildren] = useState(false)
 
@@ -80,12 +78,6 @@ function CreateExcursion() {
   }
 
   function minChanged(event: React.ChangeEvent<HTMLInputElement>) {
-    if (event.target.value.trim() === '') {
-      minUndef = true
-    }
-    else {
-      minUndef = false
-    }
     let new_val = Number.parseInt(event.target.value)
     if (new_val > maxPeople) {
       setMaxPeople(new_val)
@@ -94,13 +86,10 @@ function CreateExcursion() {
   }
 
   function maxChanged(event: React.ChangeEvent<HTMLInputElement>) {
-    if (event.target.value.trim() === '') {
-      maxUndef = true
-    }
-    else {
-      maxUndef = false
-    }
     let new_val = Number.parseInt(event.target.value)
+    if (new_val < minPeople) {
+      setMinPeople(new_val)
+    }
     setMaxPeople(new_val)
   }
 
@@ -119,7 +108,7 @@ function CreateExcursion() {
         <label className='textStyle2 selectable-text'>
           Введите название экскурсии
         </label>
-        <input className='textStyle customBorder input_style' placeholder='Имя экскурсии' value={excursionName} onChange={nameChanged}/>
+        <input className='textStyle customBorder input_style' placeholder='Имя экскурсии' value={excursionName} onChange={nameChanged} />
         <label className='textStyle2 selectable-text'>
           Выберите даты экскурсии
         </label>
@@ -211,7 +200,7 @@ function CreateExcursion() {
         placeholder='Макс.'
         value={maxPeople}
         onChange={maxChanged}
-        min={minPeople}
+        min={1}
         step={1}
       />
     </div>
@@ -240,9 +229,9 @@ function CreateExcursion() {
         }}>
           <input {...getInputProps()} />
           {preview ? (
-            <img src={preview} alt="Preview" style={{ width: `${13*k}rem`, height: `${13*k}rem`, aspectRatio: 1, borderRadius: "1rem"}} />
+            <img src={preview} alt="Preview" style={{ width: "100%", height: "100%", aspectRatio: 1, borderRadius: "1rem", objectFit: "cover", objectPosition: "center center"}} />
           ) : (
-            <img src="src\assets\WhiteBackground.jpg" alt="Preview" style={{ width: `${13*k}rem`, height: `${13*k}rem`, aspectRatio: 1, borderRadius: "1rem"}} />
+            <img src="src\assets\WhiteBackground.jpg" alt="Preview" style={{ width: "100%", height: "100%", aspectRatio: 1, borderRadius: "1rem", objectFit: "cover", objectPosition: "center center"}} />
           )}
         </div>
         <label className='textStyle2 selectable-text'>

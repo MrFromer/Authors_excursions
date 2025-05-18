@@ -7,6 +7,7 @@ import CreateExcursion from './CreateExcursion';
 import MainPage from './MainPage';
 import { useEffect } from 'react';
 import AccountPage from './AccountPage';
+import ExcursionFullView from './ExcursionFullView';
 
 
 function App() {
@@ -16,13 +17,14 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path='/create-excursion' element={<CreateExcursion />} />
-        <Route path="/restore-password" element={<RestorePassword />} />
-        <Route path="/" element={<MainPage />} />
-        <Route path="/login" element={<LogIn />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/confirm-email" element={<MailVerification />} />
+        <Route path='/create-excursion' element={ <CreateExcursion /> } />
+        <Route path="/restore-password" element={ <RestorePassword /> } />
+        <Route path="/" element={ <MainPage /> } />
+        <Route path="/login" element={ <LogIn /> } />
+        <Route path="/signup" element={ <SignUp /> } />
+        <Route path="/confirm-email" element={ <MailVerification /> } />
         <Route path='/account' element={ <AccountPage /> } />
+        <Route path='/excursion/:excursionId' element={ <ExcursionFullView /> } />
       </Routes>
     </Router>
   )
