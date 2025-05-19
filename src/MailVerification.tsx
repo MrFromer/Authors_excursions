@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { isMobile } from 'react-device-detect'
-function MailVerification() {
+async function MailVerification() {
     const [code, setCode] = useState("");
     const [codeError, setCodeError] = useState(false)
     const [codeErrorText, setCodeErrorText] = useState("")

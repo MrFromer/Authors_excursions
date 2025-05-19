@@ -10,6 +10,7 @@ import { ru } from "date-fns/locale";
 import React from "react";
 import ExcurtionBlock from "./ExcursionBlock";
 import OuterShape from "./OuterShape";
+import test from "./assets/Паровозик.gif"
 
 type DateRange = {
     startDate: Date | null;
@@ -175,7 +176,7 @@ function MainPage() {
                 <label className="bigText">
                     Избранные экскурсии вашего города
                 </label>
-                { ExcurtionBlock(2, "Москва", "20 Мая 2025", "40 февраля 1488", "Экскурсия по красной площади и прилегающим территориям akrglkagaglagaganskgfas f vlsajdngjasdnkfnadslfkasjvd ksajdng", true, 1, 4) }
+                { ExcurtionBlock(2, test,"Москва", "20 Мая 2025", "40 февраля 1488", "Экскурсия по красной площади и прилегающим территориям akrglkagaglagaganskgfas f vlsajdngjasdnkfnadslfkasjvd ksajdng", true, 1, 4) }
                 { ExcurtionBlock() }
                 { ExcurtionBlock() }
             </div>

@@ -29,7 +29,6 @@ function CreateExcursion() {
           ...prevState,
           startDate: date,
         }));
-        // Если дата "от" позже даты "до", сбрасываем дату "до"
         if (dates.endDate && date && date > dates.endDate) {
           setDates((prevState) => ({
             ...prevState,

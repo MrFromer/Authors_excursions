@@ -1,8 +1,9 @@
 import { MouseEvent } from "react";
 import { useNavigate } from "react-router-dom";
+import placeholder from "../src/assets/Teto_party.gif"
 
 
-function ExcurtionBlock(id: number = 0,city: string = "Барнаул", dateStart: string = "1 Января 1970", dateEnd: string | null = null, description: string = "Экскурсия", childrenAllowed: boolean = false, peopleMin: number = 1, peopleMax: number = 20) {
+function ExcurtionBlock(id: number = 0, image: string = placeholder, city: string = "Барнаул", dateStart: string = "1 Января 1970", dateEnd: string | null = null, description: string = "Экскурсия", childrenAllowed: boolean = false, peopleMin: number = 1, peopleMax: number = 20) {
     const navigate = useNavigate()
     function handleClick()  {
         navigate(`/excursion/${id}`)
@@ -10,7 +11,7 @@ function ExcurtionBlock(id: number = 0,city: string = "Барнаул", dateStar
     const k = 1.2
     return <>
         <button type='button' className="excursionBlockExternal roundedBlock noCursor" onClick={() => handleClick()} style={{width: "100%"}}>
-            <img src="src/assets/Teto_party.gif" alt="Здесь могла быть ваша реклама" style={{height: `${13 * k}rem`, width: `${13 * k}rem`, borderRadius: "1rem", objectFit: "cover", objectPosition: "center" }}/>
+            <img src={image} alt="Здесь могла быть ваша реклама" style={{height: `${13 * k}rem`, width: `${13 * k}rem`, borderRadius: "1rem", objectFit: "cover", objectPosition: "center" }}/>
             <div className="excursionBlockInternal" style={{flexGrow: 1}}>
                 <label className="textStyle selectable-text">
                     <b>Город:</b> {city}
