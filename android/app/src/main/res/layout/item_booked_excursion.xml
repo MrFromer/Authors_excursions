@@ -6,77 +6,36 @@
     android:background="@drawable/style_background_outline"
     android:backgroundTint="@color/tbank_yellow"
 
-    android:layout_marginBottom="5dp" >
+    android:layout_marginBottom="8dp" >
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
 
-            android:scaleType="centerCrop"
-            android:clipToOutline="true"
-
-            android:src="@drawable/card_preview"
-            android:background="@drawable/style_rounded_corners"
-
-            app:layout_constraintDimensionRatio="10:7"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <LinearLayout
-            android:layout_width="0dp"
+        <TextView
+            android:id="@+id/excursion_name"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@id/imageView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            android:text="Выходные в окружении гор, тишины и покоя: Сулак, Хунзах и Гуниб в мини-группе"
+            android:textStyle="bold"
+            android:textSize="20sp">
+        </TextView>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Россия, Дагестан, Бархан Сарыкум"
-                android:drawableStart="@drawable/icon_location_mark">
-            </TextView>
+        <TextView
+            android:id="@+id/excursion_date"
+            android:layout_marginTop="8dp"
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Выходные в окружении гор, тишины и покоя: Сулак, Хунзах и Гуниб в мини-группе"
-                android:textStyle="bold"
-                android:textSize="20sp">
-            </TextView>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
+            android:text="Дата: 18.05.2025">
+        </TextView>
 
+    </LinearLayout>
 
-            <TextView
-                android:layout_marginTop="8dp"
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:text="Количество человек: 3">
-            </TextView>
-
-
-
-            <TextView
-                android:layout_marginTop="8dp"
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:textStyle="bold"
-
-                android:text="Дата: 18.05.2025">
-            </TextView>
-
-        </LinearLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

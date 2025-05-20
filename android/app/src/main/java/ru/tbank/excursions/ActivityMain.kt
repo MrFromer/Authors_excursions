@@ -1,13 +1,8 @@
 package ru.tbank.excursions
 
-import android.graphics.Color
-import android.os.Build
 import android.os.Bundle
-import android.view.View
-import android.view.WindowManager
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 
@@ -25,7 +20,7 @@ class ActivityMain : AppCompatActivity() {
     private fun setUpTabBar()
     {
         val tabLayout = findViewById<TabLayout>(R.id.tabLayout)
-        val adapter = FragmentAdapter(this,tabLayout.tabCount)
+        val adapter = AdapterFragment(this,tabLayout.tabCount)
         val viewPager = findViewById<ViewPager2>(R.id.viewPager)
         viewPager.adapter = adapter
 
