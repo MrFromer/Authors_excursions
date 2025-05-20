@@ -30,6 +30,7 @@
                 android:textStyle="bold" />
 
             <Button
+                android:id="@+id/published_excursions"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="start"
@@ -41,6 +42,7 @@
                 android:textSize="18sp" />
 
             <Button
+                android:id="@+id/booking_calendar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="start"
@@ -52,6 +54,7 @@
                 android:textSize="18sp" />
 
             <Button
+                android:id="@+id/create_excursion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="start"
@@ -62,6 +65,7 @@
                 android:textSize="18sp" />
 
             <Button
+                android:id="@+id/profile_settings"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="start"
@@ -75,7 +79,7 @@
     </ScrollView>
 
     <Button
-        android:id="@+id/frameLayout"
+        android:id="@+id/logoutBt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"

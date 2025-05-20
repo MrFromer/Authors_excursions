@@ -11,7 +11,7 @@ class ActivityProfile : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        if (true)
+        if (false)
         {
             setContentView(R.layout.activity_lk_user)
 
@@ -44,6 +44,38 @@ class ActivityProfile : AppCompatActivity() {
         else
         {
             setContentView(R.layout.activity_lk_guide)
+
+            val publishedExcursionsButton = findViewById<Button>(R.id.published_excursions)
+            val bookingCalendarButton = findViewById<Button>(R.id.booking_calendar)
+            val profileSettingsButton = findViewById<Button>(R.id.profile_settings)
+            val createExcursionButton = findViewById<Button>(R.id.create_excursion)
+            val logOutButton = findViewById<Button>(R.id.logoutBt)
+
+            publishedExcursionsButton.setOnClickListener{
+                val intent = Intent(this, ActivityBookedExcursions::class.java)
+                startActivity(intent)
+            }
+
+            bookingCalendarButton.setOnClickListener{
+                val intent = Intent(this, ActivityBookingHistory::class.java)
+                startActivity(intent)
+            }
+
+            profileSettingsButton.setOnClickListener{
+                val intent = Intent(this, ActivityProfileSettings::class.java)
+                startActivity(intent)
+            }
+
+            createExcursionButton.setOnClickListener{
+                val intent = Intent(this, ActivityCreateExcursion::class.java)
+                startActivity(intent)
+            }
+
+            logOutButton.setOnClickListener{
+                Temporary.loggedIn = false
+
+                startActivity(Intent(this,ActivityMain::class.java))
+            }
         }
     }
 }

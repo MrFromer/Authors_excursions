@@ -15,6 +15,9 @@
         android:theme="@style/Theme.TBankAuthorsExcursions"
         tools:targetApi="31">
         <activity
+            android:name=".ActivityCreateExcursion"
+            android:exported="false" />
+        <activity
             android:name=".ActivityAccount"
             android:exported="false" />
         <activity
@@ -42,9 +45,9 @@
             android:exported="false" />
         <activity
             android:name=".ActivityMain"
-            android:launchMode="singleTask"
             android:configChanges="orientation|screenSize|screenLayout"
             android:exported="true"
+            android:launchMode="singleTask"
             android:windowSoftInputMode="stateAlwaysVisible">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
