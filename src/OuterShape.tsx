@@ -1,7 +1,7 @@
-import { JSX, } from "react";
+import { JSX, Suspense, } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-function OuterShape(innerShape: JSX.Element) {
+function OuterShape({ innerShape }: { innerShape: JSX.Element }) {
     const navigate = useNavigate()
     return (
         <div className="mainPageExternal">
@@ -22,7 +22,9 @@ function OuterShape(innerShape: JSX.Element) {
                     Личный кабинет
                 </button>
             </div>
-            { innerShape }
+            <Suspense fallback={<h1>Загрузка</h1>}>
+                { innerShape }
+            </Suspense>
         </div>
     )
 }

@@ -1,10 +1,12 @@
 import OuterShape from "./OuterShape"
 
 function AccountPage() {
-    return OuterShape(
-        <label>
-            Типа личный кабинет
-        </label>
+    return (
+        <OuterShape innerShape={
+            <label>
+                Типа личный кабинет
+            </label>}
+        />
     )
 }
 

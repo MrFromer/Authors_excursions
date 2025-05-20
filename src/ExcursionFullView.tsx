@@ -5,13 +5,11 @@ import ExcurtionFullBlock from "./ExcursionFullBlock";
 function ExcursionFullView() {
     const { excursionId } = useParams()
     return (
-        OuterShape(<>
-                { ExcurtionFullBlock() }
-                <label>
-                    Полный вид экскурсии {excursionId}
-                </label>
-            </>
-        )
+        <OuterShape innerShape=
+            {
+                <ExcurtionFullBlock />
+            }
+        />
     )
 }
 
