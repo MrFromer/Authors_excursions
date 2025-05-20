@@ -41,4 +41,9 @@
     <string name="create_excursion">Создать экскурсию</string>
     <string name="book_calendar">Календарь бронирований</string>
     <string name="my_excursions">Опубликованные экскурсии</string>
+    <string name="enter_excursion_name">Введите название экскурсии</string>
+    <string name="excursion_name_text">Название экскурсии</string>
+    <string name="dates_text">Даты</string>
+    <string name="short_description_text">Краткое описание</string>
+    <string name="full_description">Полное описание</string>
 </resources>
