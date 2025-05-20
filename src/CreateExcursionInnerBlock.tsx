@@ -2,7 +2,7 @@ import { Box, TextField } from '@mui/material';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { ru } from 'date-fns/locale';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import { useDropzone } from 'react-dropzone';
 
@@ -11,7 +11,13 @@ type DateRange = {
   endDate: Date | null;
 };
 
-async function CreateExcursionInnerBlock() {
+function CreateExcursionInnerBlock() {
+  const [previews, setPreviews] = useState<string[]>([]);
+  const previewsRef = useRef<string[]>([]);
+
+  useEffect(() => {
+    previewsRef.current = previews;
+  }, [previews]);
   const today = new Date()
 
   const [checkChildren, setCheckChildren] = useState(false)
@@ -44,27 +50,50 @@ async function CreateExcursionInnerBlock() {
     };
 
 
-  const [preview, setPreview] = useState<string | null>(null);
   const k = 1;
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
-    const file = acceptedFiles[0];
-    const reader = new FileReader();
-    
-    reader.onload = () => {
-      setPreview(reader.result as string);
-    };
-    
-    reader.readAsDataURL(file);
+    const fileReaders = acceptedFiles.map((file) => {
+      return new Promise<string>((resolve) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result as string);
+        reader.readAsDataURL(file);
+      });
+    });
+
+    Promise.all(fileReaders).then((newImages) => {
+      const currentLength = previewsRef.current.length;
+      const remainingSlots = 10 - currentLength;
+
+      if (remainingSlots <= 0) {
+        alert('Вы достигли лимита в 10 картинок! Удалите часть картинок, чтобы добавить новые.');
+        return;
+      }
+
+      const imagesToAdd = newImages.slice(0, remainingSlots);
+
+      if (newImages.length > remainingSlots) {
+        alert(`Добавлено только ${imagesToAdd.length} из ${newImages.length} картинок. Лимит — 10.`);
+      }
+
+      setPreviews((prev) => [...prev, ...imagesToAdd]);
+    });
   }, []);
+
+
+
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     accept: {
       'image/*': ['.jpeg', '.png', '.gif', '.webp']
     },
-    maxFiles: 1
+    maxFiles: undefined
   });
+
+  const handleRemoveImage = (indexToRemove: number) => {
+    setPreviews((prev) => prev.filter((_, index) => index !== indexToRemove));
+  };  
 
   function nameChanged(event: React.ChangeEvent<HTMLInputElement>) {
     const newName = event.target.value
@@ -92,6 +121,7 @@ async function CreateExcursionInnerBlock() {
   }
 
   function submitExcursion() {
+    console.log(previews)
     console.log("Excurison submitted")
     // TODO: Сделать отправку экскурсии
   }
@@ -217,20 +247,58 @@ async function CreateExcursionInnerBlock() {
         Выберите изображение для экскурсии размером 1 на 1
         </label>
         <div {...getRootProps()} style={{
-        border: '2px dashed #ccc',
-        padding: 0,
-        borderRadius: "1rem",
-        cursor: 'pointer',
-        backgroundColor: isDragActive ? '#f0f0f0' : 'white',
-        width: `${13*k}rem`,
-        height: `${13*k}rem`
+          border: '2px dashed #ccc',
+          padding: 0,
+          borderRadius: "1rem",
+          cursor: 'pointer',
+          backgroundColor: isDragActive ? '#f0f0f0' : 'white',
+          width: "100%",
+          maxWidth: "100%",
+          alignItems: "center"
         }}>
-        <input {...getInputProps()} />
-        {preview ? (
-            <img src={preview} alt="Preview" style={{ width: "100%", height: "100%", aspectRatio: 1, borderRadius: "1rem", objectFit: "cover", objectPosition: "center center"}} />
-        ) : (
-            <img src="src\assets\WhiteBackground.jpg" alt="Preview" style={{ width: "100%", height: "100%", aspectRatio: 1, borderRadius: "1rem", objectFit: "cover", objectPosition: "center center"}} />
-        )}
+          <input {...getInputProps()} />
+          <div className='noCursor'
+            style={{
+              display: 'grid',
+              gridTemplateColumns: `repeat(auto-fill, minmax(${13 * k}rem, 1fr))`,
+              gap: '1rem',
+              maxWidth: '100%', // можно ограничить ширину, если нужно
+              padding: '1rem'
+            }}
+          >
+            { previews.length != 0 ? (
+              previews.map((src, index) => (
+                <div key={index}>
+                  <img
+                    src={src}
+                    alt={`preview-${index}`}
+                    style={{
+                      width: `${13 * k}rem`,
+                      height: `${13 * k}rem`,
+                      aspectRatio: 1,
+                      borderRadius: '1rem',
+                      objectFit: 'cover',
+                      objectPosition: 'center center',
+                      display: 'block',
+                      marginBottom: '0.5rem',
+                      border: "1px solid black"
+                    }}
+                  />
+                  <button
+                    className="tinkoffButton"
+                    onClick={(event) => {
+                      handleRemoveImage(index)
+                      event.stopPropagation()
+                    }}
+                  >
+                    Удалить
+                  </button>
+                </div>
+              ))
+            ) : (
+                <img src="src\assets\WhiteBackground.jpg" alt="Preview" style={{ width: `${13*k}rem`, height: `${13*k}rem`, aspectRatio: 1, borderRadius: "1rem", objectFit: "cover", objectPosition: "center center"}} />
+            )}
+          </div>
         </div>
         <label className='textStyle2 selectable-text'>
         Допускаются ли дети {"\t \t "}

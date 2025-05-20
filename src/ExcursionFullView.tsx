@@ -1,13 +1,13 @@
 import { useParams } from "react-router-dom";
 import OuterShape from "./OuterShape"
-import ExcurtionFullBlock from "./ExcursionFullBlock";
+import ExcursionFullViewBlock from "./ExcursionFullViewBlock";
 
 function ExcursionFullView() {
     const { excursionId } = useParams()
     return (
         <OuterShape innerShape=
             {
-                <ExcurtionFullBlock />
+                <ExcursionFullViewBlock />
             }
         />
     )

@@ -12,7 +12,7 @@ interface ExcursionFullBlockProps {
   peopleMax?: number;
 }
 
-function ExcursionFullBlock({
+function ExcursionFullViewBlock({
   image = placeholder, 
   city = "Барнаул", 
   dateStart = "1 Января 1970", 
@@ -40,4 +40,4 @@ function ExcursionFullBlock({
   );
 }
 
-export default ExcursionFullBlock;
+export default ExcursionFullViewBlock;
