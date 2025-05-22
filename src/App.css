@@ -1,0 +1,23 @@
+
+#root {
+  margin: 0 auto;
+  text-align: center;
+}
+
+body {
+  background-color: #F3F3F5;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.custom {
+  text-align: left;
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
