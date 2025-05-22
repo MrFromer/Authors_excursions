@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="gray">#FF222222</color>
+
+    <color name="transparent">#00000000</color>
+    <color name="black">#FF000000</color>
+    <color name="icons_gray">#9aa3a8</color>
+    <color name="icons_black">#04192d</color>
+    <color name="background_gray">#f6f7fb</color>
+    <color name="error_red">#f52222</color>
+    <color name="esc_red">#eb4d55</color>
+    <color name="tbank_yellow">#fce56d</color>
+
+    <color name="l_gray">#FFE0E1E3</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="white_tr">#CCFFFFFF</color>
+    <color name="g_tbank_yellow">#fce56d</color>
+</resources>
