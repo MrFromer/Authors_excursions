@@ -51,6 +51,13 @@ button.tinkoffButton:focus {
   outline: none;
 }
 
+.tStyle {
+  font-size: large;
+  text-align: left;
+  background-color: white;
+  color: #333333;
+}
+
 .textStyle {
   font-size: large;
   height: 2rem;
@@ -279,4 +286,58 @@ div.createExcursionInternal {
   align-self: stretch;
   background-color: #F3F3F5;
   color: #333333;
+}
+
+.wrapper {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  padding-bottom: 10px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.excursionFullViewExternal  {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 80%;
+  gap: 2rem;
+  border-radius: 1rem;
+  background-color: white;
+  margin-top: 1rem;
+  padding: 1rem;
+}
+
+.excursionFullViewInternal {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  gap: 10px;
+}
+
+div.excursionBlockInternal {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+div.mainPageInternal {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  padding-bottom: 10px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }

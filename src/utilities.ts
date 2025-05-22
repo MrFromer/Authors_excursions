@@ -1,4 +1,6 @@
 import { CODE_LENGTH } from "./globals"
+import placeholder from "./assets/vasserman_tantsuet.gif"
+import placeholder2 from "./assets/Cum.gif"
 
 export enum emailResult {
   Ok,
@@ -65,3 +67,31 @@ export function checkPassword(password: string): passwordResult {
   return passwordResult.Ok
 }
 
+
+export interface ExcursionFullBlockProps {
+  image?: string;
+  city?: string;
+  dateStart?: string;
+  dateEnd?: string;
+  shortDescription?: string;
+  fullDescription?: string;
+  childrenAllowed?: boolean;
+  peopleMin?: number;
+  peopleMax?: number;
+}
+
+const test: ExcursionFullBlockProps = {
+  image: placeholder2,
+  city: "Барнаул",
+  dateStart: "1 Января 1970",
+  shortDescription: "Экскурсия",
+  fullDescription: '"Тайны старого квартала: прогулка сквозь века" - это 2.5-часовая пешеходная экскурсия по историческому центру, начинающаяся на площади Свободы у фонтана "Времена года". Маршрут проведет вас по самым загадочным местам квартала: вы услышите легенды площади Свободы с ее подземными ходами, увидите масонские символы на Улице Каменных львов, посетите таинственный Дом алхимика XVIII века, где искали философский камень, отдохнете в уединенном Тайном саду графини Орловой с его экзотическими растениями, спуститесь в атмосферные Подземные галереи XVII века, где хранили вино и прятали контрабанду, а также заглянете в Старую аптеку с ее "шкатулкой черного доктора". Экскурсия завершится в кофейне "Под часами" дегустацией исторического "Эликсира бодрости" по рецепту 1890 года.',
+  childrenAllowed: true,
+  peopleMin: 2,
+peopleMax: 10
+}
+
+
+export function loadExcusionInfo(excursionId: number) {
+  return test
+}

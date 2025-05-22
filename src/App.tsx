@@ -8,6 +8,7 @@ import MainPage from './MainPage';
 import { useEffect } from 'react';
 import AccountPage from './AccountPage';
 import ExcursionFullView from './ExcursionFullView';
+import DefaultPage from './DefaultPage';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
         <Route path="/confirm-email" element={ <MailVerification /> } />
         <Route path='/account' element={ <AccountPage /> } />
         <Route path='/excursion/:excursionId' element={ <ExcursionFullView /> } />
+        <Route path='*' element={ <DefaultPage /> } />
       </Routes>
     </Router>
   )

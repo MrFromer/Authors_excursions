@@ -1,12 +1,17 @@
 import './App.css'
+import OuterShape from './OuterShape'
 import './styles.css'
 
 
 function DefaultPage() {
     return (
-        <label>
-            Яндекс лучший, Тинькофф сосать
-        </label>
+        <OuterShape innerShape=
+            {
+                <h1>
+                    Такой страницы не существует
+                </h1>
+            }
+        />
     )
 }
 

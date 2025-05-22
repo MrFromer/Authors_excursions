@@ -49,6 +49,8 @@ function ExcursionBlock({
           borderRadius: "1rem",
           objectFit: "cover",
           objectPosition: "center",
+          fontSize: "large",
+          color: "#333333"
         }}
       />
       <div className="excursionBlockInternal" style={{ flexGrow: 1 }}>
