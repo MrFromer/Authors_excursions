@@ -69,6 +69,7 @@ export function checkPassword(password: string): passwordResult {
 
 
 export interface ExcursionFullBlockProps {
+  id?: number;
   image?: string;
   city?: string;
   dateStart?: string;
@@ -81,6 +82,7 @@ export interface ExcursionFullBlockProps {
 }
 
 const test: ExcursionFullBlockProps = {
+  id: 0,
   image: placeholder2,
   city: "Барнаул",
   dateStart: "1 Января 1970",
@@ -93,5 +95,12 @@ peopleMax: 10
 
 
 export function loadExcusionInfo(excursionId: number) {
-  return test
+  let result = test;
+  result.id = excursionId
+  console.log(result)
+  return result
+}
+
+export function signForExcursion(excursionId: number) {
+  console.log(`Запись на экускурсию ID: ${excursionId}`)
 }

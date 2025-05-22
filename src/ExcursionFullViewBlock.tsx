@@ -1,8 +1,8 @@
 import placeholder from "./assets/Teto_party.gif"
-import OuterShape from "./OuterShape";
-import { ExcursionFullBlockProps } from "./utilities";
+import { ExcursionFullBlockProps, signForExcursion } from "./utilities";
 
 function ExcursionFullViewBlock({
+  id = 0,
   image = placeholder, 
   city = "Барнаул", 
   dateStart = "1 Января 1970", 
@@ -46,7 +46,7 @@ function ExcursionFullViewBlock({
           <label className="textStyle"><b>Максимальное количество людей</b>: {peopleMax}</label>
           <label className="textStyle"><b>{childrenAllowed ? "Дети допускаются" : "Дети не допускаются"}</b></label>
         </div>
-        <button className="tinkoffButton">
+        <button className="tinkoffButton" onClick={() => signForExcursion(id)}>
           Записаться на экскурсию
         </button>
       </div>

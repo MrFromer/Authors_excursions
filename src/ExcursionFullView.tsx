@@ -38,7 +38,7 @@ function ExcursionFullView() {
                     {
                         <ExcursionFullViewBlock image={excursionInfo.image} dateStart={excursionInfo.dateStart} dateEnd={excursionInfo.dateEnd}
                             shortDescription={excursionInfo.shortDescription} fullDescription={excursionInfo.fullDescription} childrenAllowed={excursionInfo.childrenAllowed}
-                            city={excursionInfo.city} peopleMin={excursionInfo.peopleMin} peopleMax={excursionInfo.peopleMax}
+                            city={excursionInfo.city} peopleMin={excursionInfo.peopleMin} peopleMax={excursionInfo.peopleMax} id={excursionInfo.id}
                         />
                     }
                 />
