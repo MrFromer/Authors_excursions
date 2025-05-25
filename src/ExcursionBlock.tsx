@@ -1,6 +1,7 @@
 import { MouseEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import placeholder from "../src/assets/Teto_party.gif";
+import { isMobile } from "react-device-detect";
 
 interface ExcursionBlockProps {
   id: number;
@@ -36,7 +37,7 @@ function ExcursionBlock({
   return (
     <button
       type="button"
-      className="excursionBlockExternal roundedBlock noCursor"
+      className={`${isMobile? "excursionBlockMobileExternal": "excursionBlockExternal"} roundedBlock noCursor`}
       onClick={handleClick}
       style={{ width: "100%" }}
     >
