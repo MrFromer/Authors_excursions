@@ -104,3 +104,10 @@ export function loadExcusionInfo(excursionId: number) {
 export function signForExcursion(excursionId: number) {
   console.log(`Запись на экускурсию ID: ${excursionId}`)
 }
+
+export type ProfilePageProps = {
+  isGuide: boolean;
+  name?: string;
+  surname?: string;
+  username?: string;
+};
