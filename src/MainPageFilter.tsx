@@ -72,26 +72,31 @@ function MainPageFilter() {
             singleValue: (provided) => ({
               ...provided,
               textAlign: "left",
+              color: "black",
               marginLeft: 0,
             }),
             placeholder: (provided) => ({
               ...provided,
               textAlign: "left",
+              color: "black",
               marginLeft: 0,
             }),
             input: (provided) => ({
               ...provided,
               paddingLeft: 0,
+              color: "black",
               marginLeft: 0,
             }),
             option: (provided) => ({
               ...provided,
               textAlign: "left",
+              color: "black",
               marginLeft: 0,
             }),
             noOptionsMessage: (provided) => ({
               ...provided,
               textAlign: "left",
+              color: "black",
               marginLeft: 0,
             }),
             menuPortal: (base) => ({ ...base, zIndex: 9999 }),
@@ -146,7 +151,7 @@ function MainPageFilter() {
                         shrink: true,
                       },
                       input: {
-                        style: { width: "100%", backgroundColor: "white" },
+                        style: { width: "100%", backgroundColor: "white", color: "black" },
                       },
                     }}
                   />
@@ -175,7 +180,7 @@ function MainPageFilter() {
                         shrink: true,
                       },
                       input: {
-                        style: { width: "100%", backgroundColor: "white" },
+                        style: { width: "100%", backgroundColor: "white", color: "black" },
                       },
                     }}
                   />
@@ -190,6 +195,7 @@ function MainPageFilter() {
                 fullWidth
                 slotProps={{
                     htmlInput: {
+                        style: {color: "black"},
                         min: 1,
                     },
                 }}
