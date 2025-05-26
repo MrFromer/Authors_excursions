@@ -28,7 +28,7 @@ class ExcursionsHistoryAdapter:
         with(viewHolder.binding){
 
             excursionName.text = excursion.excursionName
-            excursionDate.text = excursion.excursionDate.toString()
+            excursionDate.text = excursion.excursionDate
         }
     }
 

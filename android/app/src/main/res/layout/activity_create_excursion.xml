@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -9,6 +10,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/buttonBS"
         android:scrollbars="none">
 
         <LinearLayout
@@ -202,6 +205,7 @@
                 android:layout_height="wrap_content"
 
                 android:text="Добавить изображения"
+                android:backgroundTint="@color/icons_gray"
                 android:textSize="18sp">
 
             </Button>
@@ -216,18 +220,20 @@
 
             </androidx.recyclerview.widget.RecyclerView>
 
-            <Button
-                android:id="@+id/buttonBS"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Завершить создание"
-                android:textSize="18sp">
-
-            </Button>
-
         </LinearLayout>
 
     </ScrollView>
+
+    <Button
+        android:id="@+id/buttonBS"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:text="Завершить создание"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="32dp">
+
+    </Button>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

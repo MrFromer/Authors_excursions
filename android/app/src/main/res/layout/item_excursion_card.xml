@@ -5,8 +5,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/style_background_outline"
     android:backgroundTint="@color/tbank_yellow"
+    android:id="@+id/clickableFrame"
 
-    android:layout_marginBottom="5dp" >
+    android:layout_marginBottom="10dp" >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -20,7 +21,6 @@
             android:scaleType="centerCrop"
             android:clipToOutline="true"
 
-            android:src="@drawable/card_preview"
             android:background="@drawable/style_rounded_corners"
 
             app:layout_constraintDimensionRatio="10:7"
@@ -38,44 +38,42 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <TextView
+                android:id="@+id/location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Россия, Дагестан, Бархан Сарыкум"
                 android:drawableStart="@drawable/icon_location_mark">
             </TextView>
 
             <TextView
+                android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Выходные в окружении гор, тишины и покоя: Сулак, Хунзах и Гуниб в мини-группе"
                 android:textStyle="bold"
                 android:textSize="20sp">
             </TextView>
 
             <TextView
+                android:id="@+id/desc"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Увидеть слияние рек, пройтись по залам скалистого замка и спуститься к подземному водопаду">
+                android:layout_height="wrap_content">
             </TextView>
 
             <TextView
+                android:id="@+id/p_amount"
+                android:layout_marginTop="8dp"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            </TextView>
+
+            <TextView
+                android:id="@+id/price"
                 android:layout_marginTop="8dp"
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:text="Количество человек: 2-5">
-            </TextView>
-
-            <TextView
-                android:layout_marginTop="8dp"
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:textStyle="bold"
-
-                android:text="Цена: 18700 ₽ за одного">
+                android:textStyle="bold">
             </TextView>
 
         </LinearLayout>

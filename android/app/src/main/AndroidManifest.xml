@@ -15,6 +15,9 @@
         android:theme="@style/Theme.TBankAuthorsExcursions"
         tools:targetApi="31">
         <activity
+            android:name=".ActivityExcursion"
+            android:exported="false" />
+        <activity
             android:name=".ActivityCreateExcursion"
             android:exported="false" />
         <activity
