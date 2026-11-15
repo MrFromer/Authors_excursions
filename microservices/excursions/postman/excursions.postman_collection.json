@@ -43,7 +43,7 @@
         "url": "{{base_url}}/api/v1/excursions",
         "body": {
           "mode": "raw",
-          "raw": "{\"city\": \"Томск\", \"title\": \"{{runTitle}}\", \"description\": \"Проверка из Postman\", \"persons_count\": 5, \"has_children\": true, \"date\": \"{{futureDate}}\", \"status\": \"change\"}",
+          "raw": "{\"city\": \"{{runCity}}\", \"title\": \"{{runTitle}}\", \"description\": \"Проверка из Postman\", \"persons_count\": 5, \"has_children\": true, \"date\": \"{{futureDate}}\", \"status\": \"change\"}",
           "options": {
             "raw": {
               "language": "json"
@@ -58,6 +58,7 @@
             "type": "text/javascript",
             "exec": [
               "pm.collectionVariables.set(\"runTitle\", \"Postman \" + pm.variables.replaceIn(\"{{$guid}}\"));",
+              "pm.collectionVariables.set(\"runCity\", \"Lab12-\" + pm.variables.replaceIn(\"{{$guid}}\").replace(/-/g, \"\").slice(0,20));",
               "pm.collectionVariables.set(\"futureDate\", new Date(Date.now()+30*86400000).toISOString());"
             ]
           }
@@ -80,7 +81,7 @@
       "request": {
         "method": "GET",
         "header": [],
-        "url": "{{base_url}}/api/v1/excursions?city=%D0%A2%D0%BE%D0%BC%D1%81%D0%BA"
+        "url": "{{base_url}}/api/v1/excursions?city={{runCity}}"
       },
       "event": [
         {
@@ -127,7 +128,7 @@
         "url": "{{base_url}}/api/v1/excursions",
         "body": {
           "mode": "raw",
-          "raw": "{\"city\": \"Томск\", \"title\": \"{{runTitle}}\", \"description\": \"Проверка из Postman\", \"persons_count\": 5, \"has_children\": true, \"date\": \"{{futureDate}}\", \"status\": \"change\"}",
+          "raw": "{\"city\": \"{{runCity}}\", \"title\": \"{{runTitle}}\", \"description\": \"Проверка из Postman\", \"persons_count\": 5, \"has_children\": true, \"date\": \"{{futureDate}}\", \"status\": \"change\"}",
           "options": {
             "raw": {
               "language": "json"
@@ -161,7 +162,7 @@
         "url": "{{base_url}}/api/v1/excursions/{{excursionId}}",
         "body": {
           "mode": "raw",
-          "raw": "{\"city\": \"Томск\", \"title\": \"{{runTitle}} updated\", \"description\": \"Полная замена\", \"persons_count\": 5, \"has_children\": true, \"date\": \"{{futureDate}}\", \"status\": \"change\"}",
+          "raw": "{\"city\": \"{{runCity}}\", \"title\": \"{{runTitle}} updated\", \"description\": \"Полная замена\", \"persons_count\": 5, \"has_children\": true, \"date\": \"{{futureDate}}\", \"status\": \"change\"}",
           "options": {
             "raw": {
               "language": "json"
@@ -228,7 +229,7 @@
         "url": "{{base_url}}/api/v1/excursions",
         "body": {
           "mode": "raw",
-          "raw": "{\"city\": \"Томск\", \"title\": \"{{runTitle}}\", \"description\": \"Проверка из Postman\", \"persons_count\": -2, \"has_children\": true, \"date\": \"{{futureDate}}\", \"status\": \"change\"}",
+          "raw": "{\"city\": \"{{runCity}}\", \"title\": \"{{runTitle}}\", \"description\": \"Проверка из Postman\", \"persons_count\": -2, \"has_children\": true, \"date\": \"{{futureDate}}\", \"status\": \"change\"}",
           "options": {
             "raw": {
               "language": "json"
@@ -262,7 +263,7 @@
         "url": "{{base_url}}/api/v1/excursions",
         "body": {
           "mode": "raw",
-          "raw": "{\"city\": \"Томск\", \"title\": \"{{runTitle}}\", \"description\": \"Проверка из Postman\", \"persons_count\": 5, \"has_children\": true, \"date\": \"2020-01-01T10:00:00Z\", \"status\": \"change\"}",
+          "raw": "{\"city\": \"{{runCity}}\", \"title\": \"{{runTitle}}\", \"description\": \"Проверка из Postman\", \"persons_count\": 5, \"has_children\": true, \"date\": \"2020-01-01T10:00:00Z\", \"status\": \"change\"}",
           "options": {
             "raw": {
               "language": "json"
@@ -517,7 +518,7 @@
         "url": "{{base_url}}/api/v1/excursions",
         "body": {
           "mode": "raw",
-          "raw": "{\"city\": \"Томск\", \"title\": \"{{runTitle}}\", \"description\": \"Проверка из Postman\", \"persons_count\": 5, \"has_children\": true, \"date\": \"{{futureDate}}\", \"status\": \"unknown\"}",
+          "raw": "{\"city\": \"{{runCity}}\", \"title\": \"{{runTitle}}\", \"description\": \"Проверка из Postman\", \"persons_count\": 5, \"has_children\": true, \"date\": \"{{futureDate}}\", \"status\": \"unknown\"}",
           "options": {
             "raw": {
               "language": "json"
@@ -551,7 +552,7 @@
         "url": "{{base_url}}/api/v1/excursions",
         "body": {
           "mode": "raw",
-          "raw": "{\"city\": \"Томск\", \"title\": \"  \", \"description\": \"Проверка из Postman\", \"persons_count\": 5, \"has_children\": true, \"date\": \"{{futureDate}}\", \"status\": \"change\"}",
+          "raw": "{\"city\": \"{{runCity}}\", \"title\": \"  \", \"description\": \"Проверка из Postman\", \"persons_count\": 5, \"has_children\": true, \"date\": \"{{futureDate}}\", \"status\": \"change\"}",
           "options": {
             "raw": {
               "language": "json"
@@ -585,7 +586,7 @@
         "url": "{{base_url}}/api/v1/excursions",
         "body": {
           "mode": "raw",
-          "raw": "{\"city\": \"Томск\", \"title\": \"{{runTitle}}\", \"description\": \"Проверка из Postman\", \"persons_count\": 5, \"has_children\": true, \"date\": \"2030-01-01T10:00:00\", \"status\": \"change\"}",
+          "raw": "{\"city\": \"{{runCity}}\", \"title\": \"{{runTitle}}\", \"description\": \"Проверка из Postman\", \"persons_count\": 5, \"has_children\": true, \"date\": \"2030-01-01T10:00:00\", \"status\": \"change\"}",
           "options": {
             "raw": {
               "language": "json"
