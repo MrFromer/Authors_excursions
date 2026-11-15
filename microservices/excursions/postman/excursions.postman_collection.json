@@ -1,0 +1,629 @@
+{
+  "info": {
+    "name": "Lab12 Authors Excursions",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://127.0.0.1:18000"
+    }
+  ],
+  "item": [
+    {
+      "name": "01 Health",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{base_url}}/health"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+              "pm.test(\"Database ready\",()=>pm.expect(pm.response.json().database).to.eql(\"ok\"));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "02 Create excursion",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/api/v1/excursions",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"city\": \"Томск\", \"title\": \"{{runTitle}}\", \"description\": \"Проверка из Postman\", \"persons_count\": 5, \"has_children\": true, \"date\": \"{{futureDate}}\", \"status\": \"change\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.collectionVariables.set(\"runTitle\", \"Postman \" + pm.variables.replaceIn(\"{{$guid}}\"));",
+              "pm.collectionVariables.set(\"futureDate\", new Date(Date.now()+30*86400000).toISOString());"
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 201\", () => pm.response.to.have.status(201));",
+              "pm.collectionVariables.set(\"excursionId\",pm.response.json().id);",
+              "pm.test(\"Positive id\",()=>pm.expect(pm.response.json().id).to.be.above(0));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "03 List excursions",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{base_url}}/api/v1/excursions?city=%D0%A2%D0%BE%D0%BC%D1%81%D0%BA"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+              "pm.test(\"Created item listed\",()=>pm.expect(pm.response.json().some(e=>e.id===Number(pm.collectionVariables.get(\"excursionId\")))).to.be.true);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "04 Read by id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{base_url}}/api/v1/excursions/{{excursionId}}"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "05 Duplicate rejected",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/api/v1/excursions",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"city\": \"Томск\", \"title\": \"{{runTitle}}\", \"description\": \"Проверка из Postman\", \"persons_count\": 5, \"has_children\": true, \"date\": \"{{futureDate}}\", \"status\": \"change\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 409\", () => pm.response.to.have.status(409));",
+              "pm.test(\"Error message\", () => { const e=pm.response.json().error; pm.expect(e.code).to.be.a(\"string\"); pm.expect(e.message).to.be.a(\"string\").and.not.empty; });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "06 Replace excursion",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/api/v1/excursions/{{excursionId}}",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"city\": \"Томск\", \"title\": \"{{runTitle}} updated\", \"description\": \"Полная замена\", \"persons_count\": 5, \"has_children\": true, \"date\": \"{{futureDate}}\", \"status\": \"change\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "07 Partial update",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/api/v1/excursions/{{excursionId}}",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"status\": \"approved\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+              "pm.test(\"Status updated\",()=>pm.expect(pm.response.json().status).to.eql(\"approved\"));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "08 Negative persons",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/api/v1/excursions",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"city\": \"Томск\", \"title\": \"{{runTitle}}\", \"description\": \"Проверка из Postman\", \"persons_count\": -2, \"has_children\": true, \"date\": \"{{futureDate}}\", \"status\": \"change\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 422\", () => pm.response.to.have.status(422));",
+              "pm.test(\"Error message\", () => { const e=pm.response.json().error; pm.expect(e.code).to.be.a(\"string\"); pm.expect(e.message).to.be.a(\"string\").and.not.empty; });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "09 Past date",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/api/v1/excursions",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"city\": \"Томск\", \"title\": \"{{runTitle}}\", \"description\": \"Проверка из Postman\", \"persons_count\": 5, \"has_children\": true, \"date\": \"2020-01-01T10:00:00Z\", \"status\": \"change\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 422\", () => pm.response.to.have.status(422));",
+              "pm.test(\"Error message\", () => { const e=pm.response.json().error; pm.expect(e.code).to.be.a(\"string\"); pm.expect(e.message).to.be.a(\"string\").and.not.empty; });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "10 Null rejected",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/api/v1/excursions/{{excursionId}}",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"title\": null}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 422\", () => pm.response.to.have.status(422));",
+              "pm.test(\"Error message\", () => { const e=pm.response.json().error; pm.expect(e.code).to.be.a(\"string\"); pm.expect(e.message).to.be.a(\"string\").and.not.empty; });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "11 Empty PATCH rejected",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/api/v1/excursions/{{excursionId}}",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 422\", () => pm.response.to.have.status(422));",
+              "pm.test(\"Error message\", () => { const e=pm.response.json().error; pm.expect(e.code).to.be.a(\"string\"); pm.expect(e.message).to.be.a(\"string\").and.not.empty; });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "12 Missing excursion",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{base_url}}/api/v1/excursions/999999999"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 404\", () => pm.response.to.have.status(404));",
+              "pm.test(\"Error message\", () => { const e=pm.response.json().error; pm.expect(e.code).to.be.a(\"string\"); pm.expect(e.message).to.be.a(\"string\").and.not.empty; });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "13 Malformed JSON",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/api/v1/excursions",
+        "body": {
+          "mode": "raw",
+          "raw": "{broken",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 422\", () => pm.response.to.have.status(422));",
+              "pm.test(\"Error message\", () => { const e=pm.response.json().error; pm.expect(e.code).to.be.a(\"string\"); pm.expect(e.message).to.be.a(\"string\").and.not.empty; });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "14 Alive after errors",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{base_url}}/health"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "15 Delete",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": "{{base_url}}/api/v1/excursions/{{excursionId}}"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 204\", () => pm.response.to.have.status(204));",
+              "pm.test(\"Empty body\",()=>pm.expect(pm.response.text()).to.eql(\"\"));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "16 Read deleted",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{base_url}}/api/v1/excursions/{{excursionId}}"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 404\", () => pm.response.to.have.status(404));",
+              "pm.test(\"Error message\", () => { const e=pm.response.json().error; pm.expect(e.code).to.be.a(\"string\"); pm.expect(e.message).to.be.a(\"string\").and.not.empty; });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "17 Pagination",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{base_url}}/api/v1/excursions?limit=1&offset=0"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+              "pm.test(\"At most one item\",()=>pm.expect(pm.response.json().length).to.be.at.most(1));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "18 Invalid pagination",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{base_url}}/api/v1/excursions?limit=-1"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 422\", () => pm.response.to.have.status(422));",
+              "pm.test(\"Error message\", () => { const e=pm.response.json().error; pm.expect(e.code).to.be.a(\"string\"); pm.expect(e.message).to.be.a(\"string\").and.not.empty; });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "19 Invalid status",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/api/v1/excursions",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"city\": \"Томск\", \"title\": \"{{runTitle}}\", \"description\": \"Проверка из Postman\", \"persons_count\": 5, \"has_children\": true, \"date\": \"{{futureDate}}\", \"status\": \"unknown\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 422\", () => pm.response.to.have.status(422));",
+              "pm.test(\"Error message\", () => { const e=pm.response.json().error; pm.expect(e.code).to.be.a(\"string\"); pm.expect(e.message).to.be.a(\"string\").and.not.empty; });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "20 Blank title",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/api/v1/excursions",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"city\": \"Томск\", \"title\": \"  \", \"description\": \"Проверка из Postman\", \"persons_count\": 5, \"has_children\": true, \"date\": \"{{futureDate}}\", \"status\": \"change\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 422\", () => pm.response.to.have.status(422));",
+              "pm.test(\"Error message\", () => { const e=pm.response.json().error; pm.expect(e.code).to.be.a(\"string\"); pm.expect(e.message).to.be.a(\"string\").and.not.empty; });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "21 Timezone required",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/api/v1/excursions",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"city\": \"Томск\", \"title\": \"{{runTitle}}\", \"description\": \"Проверка из Postman\", \"persons_count\": 5, \"has_children\": true, \"date\": \"2030-01-01T10:00:00\", \"status\": \"change\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 422\", () => pm.response.to.have.status(422));",
+              "pm.test(\"Error message\", () => { const e=pm.response.json().error; pm.expect(e.code).to.be.a(\"string\"); pm.expect(e.message).to.be.a(\"string\").and.not.empty; });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "22 Still healthy",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{base_url}}/health"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
